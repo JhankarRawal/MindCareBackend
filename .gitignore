@@ -1,1 +1,9 @@
 .vs/ 
+.env/
+node_modules/
+dist/
+# Ignore build output
+coverage/
+# Ignore logs
+npm-debug.log*
+yarn-debug.log* 
