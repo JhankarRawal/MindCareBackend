@@ -1,28 +1,84 @@
-﻿using MentalHealthApis.DTOs;
-// using MentalHealthApis.Services; // If you create a UserService
-using MentalHealthApis.Data; // For direct context use if not using UserService
+﻿using MentalHealthApis.Data;
 using MentalHealthApis.Models;
+using MentalHealthApis.DTOs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using System.IdentityModel.Tokens.Jwt;
+using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
+using System.Text;
 
 namespace MentalHealthApis.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize] // All user endpoints require authentication
     public class UsersController : ControllerBase
     {
-        private readonly ApplicationDbContext _context; // Replace with IUserService later
+        private readonly ApplicationDbContext _context;
+        private readonly IConfiguration _configuration;
+        private readonly PasswordHasher<User> _hasher;
 
-        public UsersController(ApplicationDbContext context) // Inject IUserService
+        public UsersController(ApplicationDbContext context, IConfiguration configuration)
         {
             _context = context;
+            _configuration = configuration;
+            _hasher = new PasswordHasher<User>();
         }
 
-        // GET: api/users/me (Get current logged-in user info)
+        // POST: api/users/register
+        [HttpPost("register")]
+        public async Task<IActionResult> Register(RegisterUserDto dto)
+        {
+            if (await _context.Users.AnyAsync(u => u.Email == dto.Email))
+                return BadRequest(new { message = "Email already registered" });
+
+            var user = new User
+            {
+                Name = dto.Name,
+                Email = dto.Email,
+                PhoneNumber = dto.PhoneNumber,
+                Role = UserRole.User
+            };
+
+            user.PasswordHash = _hasher.HashPassword(user, dto.Password);
+
+            _context.Users.Add(user);
+            await _context.SaveChangesAsync();
+
+            return Ok(new { message = "Registration successful" });
+        }
+
+        // POST: api/users/login
+        [HttpPost("login")]
+        public async Task<IActionResult> Login(LoginUserDto dto)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == dto.Email);
+            if (user == null)
+                return Unauthorized(new { message = "Invalid credentials" });
+
+            var result = _hasher.VerifyHashedPassword(user, user.PasswordHash, dto.Password);
+            if (result != PasswordVerificationResult.Success)
+                return Unauthorized(new { message = "Invalid credentials" });
+
+            var token = GenerateJwtToken(user);
+
+            var userDto = new UserDto
+            {
+                Id = user.Id,
+                Name = user.Name,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber,
+                Role = user.Role
+            };
+
+            return Ok(new { token, user = userDto });
+        }
+
+        // GET: api/users/me
         [HttpGet("me")]
+        [Authorize]
         public async Task<ActionResult<UserDto>> GetCurrentUser()
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -31,22 +87,22 @@ namespace MentalHealthApis.Controllers
             var user = await _context.Users.FindAsync(int.Parse(userId));
             if (user == null) return NotFound();
 
-            return Ok(new UserDto { Id = user.Id, Name = user.Name, Email = user.Email, PhoneNumber = user.PhoneNumber, Role = user.Role });
+            var dto = new UserDto
+            {
+                Id = user.Id,
+                Name = user.Name,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber,
+                Role = user.Role
+            };
+
+            return Ok(dto);
         }
 
-        // GET: api/users/{id} (Admin can get any user)
-        [HttpGet("{id}")]
-        [Authorize(Roles = "Admin")]
-        public async Task<ActionResult<UserDto>> GetUser(int id)
-        {
-            var user = await _context.Users.FindAsync(id);
-            if (user == null) return NotFound();
-            return Ok(new UserDto { Id = user.Id, Name = user.Name, Email = user.Email, PhoneNumber = user.PhoneNumber, Role = user.Role });
-        }
-
-        // PUT: api/users/me (Update current logged-in user's info)
+        // PUT: api/users/me
         [HttpPut("me")]
-        public async Task<IActionResult> UpdateCurrentUser(UpdateUserDto updateUserDto)
+        [Authorize]
+        public async Task<IActionResult> UpdateCurrentUser(UpdateUserDto dto)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (userId == null) return Unauthorized();
@@ -54,14 +110,37 @@ namespace MentalHealthApis.Controllers
             var user = await _context.Users.FindAsync(int.Parse(userId));
             if (user == null) return NotFound();
 
-            if (!string.IsNullOrEmpty(updateUserDto.Name)) user.Name = updateUserDto.Name;
-            if (!string.IsNullOrEmpty(updateUserDto.PhoneNumber)) user.PhoneNumber = updateUserDto.PhoneNumber;
-            // Add more updatable fields as needed
+            if (!string.IsNullOrEmpty(dto.Name)) user.Name = dto.Name;
+            if (!string.IsNullOrEmpty(dto.PhoneNumber)) user.PhoneNumber = dto.PhoneNumber;
 
-            _context.Entry(user).State = EntityState.Modified;
+            _context.Users.Update(user);
             await _context.SaveChangesAsync();
 
-            return NoContent();
+            return Ok(new { message = "Profile updated successfully" });
+        }
+
+        // Helper to generate JWT
+        private string GenerateJwtToken(User user)
+        {
+            var claims = new[]
+            {
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+                new Claim(ClaimTypes.Email, user.Email),
+                new Claim(ClaimTypes.Role, user.Role.ToString())
+            };
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]!));
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+            var token = new JwtSecurityToken(
+                issuer: _configuration["Jwt:Issuer"],
+                audience: _configuration["Jwt:Audience"],
+                claims: claims,
+                expires: DateTime.UtcNow.AddDays(7),
+                signingCredentials: creds
+            );
+
+            return new JwtSecurityTokenHandler().WriteToken(token);
         }
     }
 }
