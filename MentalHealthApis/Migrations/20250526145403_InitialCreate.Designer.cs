@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MentalHealthApis.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250510061817_InitialCreate")]
+    [Migration("20250526145403_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -177,7 +177,7 @@ namespace MentalHealthApis.Migrations
                             Id = 1,
                             Email = "admin@app.com",
                             Name = "Admin User",
-                            PasswordHash = "$2a$11$bG.i5npcV.rrz.r82e2PRuZLpemEcRhd/mNATIPOA1DWHo/rQba.2",
+                            PasswordHash = "$2a$12$Cz3TQXWv5kMOJ2LF5pnz/eQU7jsffTQOjhsYQkR0w7O7PRlC/X5Y6",
                             PhoneNumber = "1234567890",
                             Role = 2
                         });

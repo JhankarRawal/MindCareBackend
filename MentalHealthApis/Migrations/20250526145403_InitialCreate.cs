@@ -113,7 +113,7 @@ namespace MentalHealthApis.Migrations
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "Id", "Email", "Name", "PasswordHash", "PhoneNumber", "Role" },
-                values: new object[] { 1, "admin@app.com", "Admin User", "$2a$11$bG.i5npcV.rrz.r82e2PRuZLpemEcRhd/mNATIPOA1DWHo/rQba.2", "1234567890", 2 });
+                values: new object[] { 1, "admin@app.com", "Admin User", "$2a$12$Cz3TQXWv5kMOJ2LF5pnz/eQU7jsffTQOjhsYQkR0w7O7PRlC/X5Y6", "1234567890", 2 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Appointments_DoctorAvailabilitySlotId",
