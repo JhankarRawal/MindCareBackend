@@ -9,29 +9,25 @@ using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// 1. Add services to the container.
-
-// Configure DbContext with SQL Server
+// 1. Configure DbContext
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Add HttpContextAccessor
+// 2. Add services
 builder.Services.AddHttpContextAccessor();
-
-// Register custom services
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IDoctorService, DoctorService>();
 builder.Services.AddScoped<IAppointmentService, AppointmentService>();
 
-// Configure controllers and JSON options
+// 3. Configure Controllers and JSON options
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
         options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
     });
 
-// 2. Configure Authentication & Authorization
+// 4. Configure Authentication
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -54,7 +50,7 @@ builder.Services.AddAuthentication(options =>
 
 builder.Services.AddAuthorization();
 
-// 3. Configure Swagger/OpenAPI
+// 5. Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
@@ -88,45 +84,44 @@ builder.Services.AddSwaggerGen(options =>
     });
 });
 
-// 4. Configure CORS
+// 6. CORS policy for Vite frontend
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowSpecificOrigin", policyBuilder =>
+    options.AddPolicy("AllowFrontend", policy =>
     {
-        policyBuilder.WithOrigins(builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>() ?? new string[] { "http://localhost:3000" })
-                     .AllowAnyHeader()
-                     .AllowAnyMethod();
+        policy.WithOrigins("http://localhost:5173")
+              .AllowAnyHeader()
+              .AllowAnyMethod()
+              .AllowCredentials();
     });
 });
 
-// ✅ Force the app to run on a fixed port (e.g., 5000)
-builder.WebHost.UseUrls("http://localhost:5000");
+// 7. Set URLs (for dev convenience)
+builder.WebHost.UseUrls("http://localhost:5000", "https://localhost:5001");
 
-// --- Build the app ---
+// Build app
 var app = builder.Build();
 
-// 5. Configure the middleware pipeline
-
+// 8. Middleware
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI(options =>
+    app.UseSwaggerUI(c =>
     {
-        options.SwaggerEndpoint("/swagger/v1/swagger.json", "Mental Health API V1");
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Mental Health API V1");
     });
 
+    // Auto-apply migrations
     try
     {
-        using (var scope = app.Services.CreateScope())
-        {
-            var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-            dbContext.Database.Migrate();
-        }
+        using var scope = app.Services.CreateScope();
+        var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+        dbContext.Database.Migrate();
     }
     catch (Exception ex)
     {
         var logger = app.Services.GetRequiredService<ILogger<Program>>();
-        logger.LogError(ex, "An error occurred while migrating the database.");
+        logger.LogError(ex, "Database migration error.");
     }
 
     app.UseDeveloperExceptionPage();
@@ -135,10 +130,19 @@ else
 {
     app.UseExceptionHandler("/Error");
     app.UseHsts();
+    app.UseHttpsRedirection(); // Only redirect in production to avoid CORS preflight redirect issues
 }
 
-app.UseHttpsRedirection();
-app.UseCors("AllowSpecificOrigin");
+// Logging requests (optional debug)
+app.Use(async (context, next) =>
+{
+    Console.WriteLine($"Request: {context.Request.Method} {context.Request.Path} - {context.Request.Scheme}");
+    await next();
+});
+
+// Apply CORS before auth
+app.UseCors("AllowFrontend");
+
 app.UseAuthentication();
 app.UseAuthorization();
 

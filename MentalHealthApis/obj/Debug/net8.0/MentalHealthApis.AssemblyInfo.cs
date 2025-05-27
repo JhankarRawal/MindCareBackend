@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MentalHealthApis")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1ef5a546da53a9da28f43252011b2c34cce2f599")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+eb74a5e4db320e6bc8d39e8e8364399e38e55051")]
 [assembly: System.Reflection.AssemblyProductAttribute("MentalHealthApis")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MentalHealthApis")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
