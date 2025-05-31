@@ -95,6 +95,9 @@ builder.Services.AddCors(options =>
               .AllowCredentials();
     });
 });
+builder.Services.AddHttpClient<SentimentService>();
+builder.Services.AddScoped<SentimentService>();
+
 
 // 7. Set URLs (for dev convenience)
 builder.WebHost.UseUrls("http://localhost:5000", "https://localhost:5001");
