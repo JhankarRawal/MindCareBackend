@@ -100,7 +100,7 @@ builder.Services.AddScoped<SentimentService>();
 
 
 // 7. Set URLs (for dev convenience)
-builder.WebHost.UseUrls("http://localhost:5000", "https://localhost:5001");
+builder.WebHost.UseUrls("http://localhost:3000", "https://localhost:3001");
 
 // Build app
 var app = builder.Build();

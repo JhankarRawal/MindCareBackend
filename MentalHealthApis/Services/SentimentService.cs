@@ -1,7 +1,8 @@
+using System;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
-using   MentalHealthApis.Models;
+using MentalHealthApis.Models;
 
 namespace MentalHealthApis.Services
 {
@@ -16,13 +17,50 @@ namespace MentalHealthApis.Services
 
         public async Task<SentimentResult> AnalyzeAsync(string content)
         {
-            var request = new { content = content };
-            var response = await _httpClient.PostAsJsonAsync("https://recommendation-system-vfxt.onrender.com/predict", request);
+            try
+            {
+                if (string.IsNullOrWhiteSpace(content))
+                {
+                    throw new ArgumentException("Content cannot be null or empty", nameof(content));
+                }
 
-            if (!response.IsSuccessStatusCode)
-                throw new Exception("Failed to call sentiment API.");
+                // Send { "text": "..." } to Flask API
+                var request = new { text = content };
 
-            return await response.Content.ReadFromJsonAsync<SentimentResult>();
+                var response = await _httpClient.PostAsJsonAsync("http://192.168.18.139:5000/predict", request);
+                Console.WriteLine($"[SentimentService] Response status code: {response.StatusCode}");
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    var errorContent = await response.Content.ReadAsStringAsync();
+                    Console.WriteLine($"[SentimentService] Error response: {errorContent}");
+                    throw new Exception($"Failed to call sentiment API. Status: {response.StatusCode}, Content: {errorContent}");
+                }
+
+                var result = await response.Content.ReadFromJsonAsync<SentimentResult>();
+
+                if (result == null)
+                {
+                    throw new Exception("Received null response from sentiment API");
+                }
+
+                return result;
+            }
+            catch (HttpRequestException ex)
+            {
+                Console.WriteLine($"[SentimentService] HTTP request failed: {ex.Message}");
+                throw new Exception($"Network error when calling sentiment API: {ex.Message}", ex);
+            }
+            catch (TaskCanceledException ex)
+            {
+                Console.WriteLine($"[SentimentService] Request timeout: {ex.Message}");
+                throw new Exception("Timeout when calling sentiment API", ex);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[SentimentService] Unexpected error: {ex.Message}");
+                throw;
+            }
         }
     }
 }
