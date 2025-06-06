@@ -1,38 +1,58 @@
+// Controllers/JournelController.cs
 using Microsoft.AspNetCore.Mvc;
 using MentalHealthApis.Models;
 using MentalHealthApis.Services;
+
 namespace MentalHealthApis.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class JournalController : ControllerBase
+    public class JournelController : ControllerBase
     {
         private readonly SentimentService _sentimentService;
 
-        public JournalController(SentimentService sentimentService)
+        public JournelController(SentimentService sentimentService)
         {
             _sentimentService = sentimentService;
         }
 
-        [HttpPost("create")]
-        public async Task<IActionResult> CreateJournal([FromBody] JournalEntryRequest entry)
+        [HttpPost("analyze")]
+        public async Task<IActionResult> AnalyzeJournalEntry([FromBody] JournalEntryRequest request)
         {
-            if (string.IsNullOrWhiteSpace(entry.Content))
-                return BadRequest("Content is required.");
-
-            var sentiment = await _sentimentService.AnalyzeAsync(entry.Content);
-
-            var response = new JournalEntryResponse
+            try
             {
-                Title = entry.Title,
-                Content = entry.Content,
-                Mood = entry.Mood,
-                Date = entry.Date,
-                Prediction = sentiment.Prediction,
-                Scores = sentiment.Scores
-            };
+                if (string.IsNullOrWhiteSpace(request.Content))
+                {
+                    return BadRequest("Journal content cannot be empty");
+                }
 
-            return Ok(response);
+                // Call sentiment analysis service
+                var sentimentResult = await _sentimentService.AnalyzeAsync(request.Content);
+
+                // Map SentimentResult to JournalEntryResponse
+                var response = new JournalEntryResponse
+                {
+                    Title = request.Title ?? "Journal Entry",
+                    Content = request.Content,
+                    Mood = request.Mood,
+                    Date = DateTime.UtcNow,
+                    Prediction = sentimentResult.Sentiment, // Use Sentiment instead of Prediction
+                    Scores = new Dictionary<string, double> // Map confidence_scores to Scores
+                    {
+                        ["positive"] = sentimentResult.Confidence_Scores?.Positive ?? 0.0,
+                        ["negative"] = sentimentResult.Confidence_Scores?.Negative ?? 0.0,
+                        ["neutral"] = sentimentResult.Confidence_Scores?.Neutral ?? 0.0
+                    }
+                };
+
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error analyzing journal entry: {ex.Message}");
+            }
         }
     }
+
+    // Request model for the journal entry
 }

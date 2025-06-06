@@ -37,12 +37,20 @@ namespace MentalHealthApis.Services
                     throw new Exception($"Failed to call sentiment API. Status: {response.StatusCode}, Content: {errorContent}");
                 }
 
+                // Read and log the raw response for debugging
+                var rawResponse = await response.Content.ReadAsStringAsync();
+                Console.WriteLine($"[SentimentService] Raw response: {rawResponse}");
+
+                // Parse the JSON response
                 var result = await response.Content.ReadFromJsonAsync<SentimentResult>();
 
                 if (result == null)
                 {
                     throw new Exception("Received null response from sentiment API");
                 }
+
+                Console.WriteLine($"[SentimentService] Parsed sentiment: {result.Sentiment}");
+                Console.WriteLine($"[SentimentService] Confidence scores - Positive: {result.Confidence_Scores?.Positive}, Negative: {result.Confidence_Scores?.Negative}, Neutral: {result.Confidence_Scores?.Neutral}");
 
                 return result;
             }
