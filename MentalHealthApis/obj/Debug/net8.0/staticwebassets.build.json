@@ -1,11 +1,12 @@
 {
   "Version": 1,
-  "Hash": "Y5i2nhGm0OgLi5BozBAunvCkXUYuKVL3b3g109bSz0Y=",
+  "Hash": "JkFDjC+ngQ8j66TsR6b0DaKu8mSIxY/LID4Nkj0+JZI=",
   "Source": "MentalHealthApis",
   "BasePath": "_content/MentalHealthApis",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [],
-  "Assets": []
+  "Assets": [],
+  "Endpoints": []
 }

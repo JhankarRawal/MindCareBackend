@@ -2,6 +2,7 @@ using MentalHealthApis.Data;
 using MentalHealthApis.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
@@ -19,6 +20,10 @@ builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IDoctorService, DoctorService>();
 builder.Services.AddScoped<IAppointmentService, AppointmentService>();
+builder.Services.AddScoped<IBlogService, BlogService>();
+//builder.Services.AddAutoMapper(typeof(Program));
+
+
 
 // 3. Configure Controllers and JSON options
 builder.Services.AddControllers()
@@ -104,6 +109,11 @@ builder.WebHost.UseUrls("http://localhost:3000", "https://localhost:3001");
 
 // Build app
 var app = builder.Build();
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    await BlogSeeder.SeedBlogDataAsync(context);
+}
 
 // 8. Middleware
 if (app.Environment.IsDevelopment())
