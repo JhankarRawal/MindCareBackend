@@ -27,7 +27,7 @@ namespace MentalHealthApis.Services
                 // Send { "text": "..." } to Flask API
                 var request = new { text = content };
 
-                var response = await _httpClient.PostAsJsonAsync("http://192.168.18.139:5000/predict", request);
+                var response = await _httpClient.PostAsJsonAsync("http://10.200.10.129:5000/predict", request);
                 Console.WriteLine($"[SentimentService] Response status code: {response.StatusCode}");
 
                 if (!response.IsSuccessStatusCode)
