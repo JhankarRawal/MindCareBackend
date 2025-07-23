@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-﻿# Ignore Visual Studio temporary files, build results, and user-specific files
+# Ignore Visual Studio temporary files, build results, and user-specific files
 .vs/
 bin/
 obj/
@@ -9,9 +8,12 @@ obj/
 *.log
 *.env
 *.appsettings.json
-.vs/ 
+
+# Node.js and frontend-related
+.env/
 node_modules/
 dist/
-npm-debug.log*
-yarn-debug.log* 
+coverage/
 
+npm-debug.log*
+yarn-debug.log*

@@ -4,6 +4,7 @@ using MentalHealthApis.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace MentalHealthApis.Services
@@ -82,10 +83,35 @@ namespace MentalHealthApis.Services
             await _context.SaveChangesAsync();
             return true;
         }
+        public int GetCurrentUserId(ClaimsPrincipal user)
+        {
+            var id = user.FindFirst("user_id")?.Value;
+            return id != null ? int.Parse(id) : throw new UnauthorizedAccessException();
+        }
+
+        public async Task<bool> CanAccessUserDataAsync(int requesterId, int targetUserId)
+        {
+            if (requesterId == targetUserId) return true;
+
+            var role = await _context.Users
+                .Where(u => u.Id == requesterId)
+                .Select(u => u.Role)
+                .FirstOrDefaultAsync();
+
+            if (role == UserRole.Admin) return true;
+
+            return await _context.Appointments.AnyAsync(a => a.DoctorId == requesterId && a.UserId == targetUserId);
+        }
+
+        public string? GetUserRole(ClaimsPrincipal user)
+        {
+            return user.FindFirst("role")?.Value;
+        }
+    
 
 
-        // Private helper for mapping
-        private static UserDto MapUserToDto(User user)
+// Private helper for mapping
+private static UserDto MapUserToDto(User user)
         {
             return new UserDto
             {

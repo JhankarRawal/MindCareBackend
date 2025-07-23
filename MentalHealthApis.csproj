@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="DTOs\Blog\BlogCommentDto.cs" />
+    <Compile Remove="DTOs\Blog\BlogFilterDto.cs" />
+    <Compile Remove="DTOs\Blog\PaginatedResultDto.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
     <PackageReference Include="LabQ.JwtBearerGrant" Version="1.0.9" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.15" />

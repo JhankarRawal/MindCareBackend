@@ -17,6 +17,8 @@ namespace MentalHealthApis.Data
         public DbSet<BlogCategory> BlogCategories { get; set; }
         public DbSet<BlogTag> BlogTags { get; set; }
         public DbSet<BlogComment> BlogComments { get; set; }
+        public DbSet<JournalEntry> JournalEntries { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -75,7 +77,11 @@ namespace MentalHealthApis.Data
                 .HasIndex(t => t.Slug)
                 .IsUnique();
 
-          
+            modelBuilder.Entity<JournalEntry>()
+                .Property(j => j.SentimentJson)
+                .HasColumnType("nvarchar(max)");
+
+
         }
     }
 }

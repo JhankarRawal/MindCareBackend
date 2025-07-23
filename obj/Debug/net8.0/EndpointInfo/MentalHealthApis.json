@@ -999,122 +999,32 @@
         "tags": [
           "Blog"
         ],
-        "parameters": [
-          {
-            "name": "CategoryId",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "CategorySlug",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Tag",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Search",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Status",
-            "in": "query",
-            "schema": {
-              "$ref": "#/components/schemas/PostStatus"
-            }
-          },
-          {
-            "name": "IsFeatured",
-            "in": "query",
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "name": "AuthorId",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "FromDate",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          },
-          {
-            "name": "ToDate",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          },
-          {
-            "name": "Page",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "PageSize",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "SortBy",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "SortOrder",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
         "responses": {
           "200": {
             "description": "OK",
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/BlogPostSummaryDtoPaginatedResultDto"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BlogPostSummaryDto"
+                  }
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/BlogPostSummaryDtoPaginatedResultDto"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BlogPostSummaryDto"
+                  }
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/BlogPostSummaryDtoPaginatedResultDto"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BlogPostSummaryDto"
+                  }
                 }
               }
             }
@@ -1168,164 +1078,19 @@
         }
       }
     },
-    "/api/Blog": {
+    "/api/Blog/posts/{id}": {
       "get": {
         "tags": [
           "Blog"
         ],
         "parameters": [
           {
-            "name": "CategoryId",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "CategorySlug",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Tag",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Search",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Status",
-            "in": "query",
-            "schema": {
-              "$ref": "#/components/schemas/PostStatus"
-            }
-          },
-          {
-            "name": "IsFeatured",
-            "in": "query",
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "name": "AuthorId",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "FromDate",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          },
-          {
-            "name": "ToDate",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          },
-          {
-            "name": "Page",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "PageSize",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "SortBy",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "SortOrder",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/BlogPostSummaryDtoPaginatedResultDto"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BlogPostSummaryDtoPaginatedResultDto"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BlogPostSummaryDtoPaginatedResultDto"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/Blog/posts/category/{categorySlug}": {
-      "get": {
-        "tags": [
-          "Blog"
-        ],
-        "parameters": [
-          {
-            "name": "categorySlug",
+            "name": "id",
             "in": "path",
             "required": true,
             "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "page",
-            "in": "query",
-            "schema": {
               "type": "integer",
-              "format": "int32",
-              "default": 1
-            }
-          },
-          {
-            "name": "pageSize",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32",
-              "default": 10
+              "format": "int32"
             }
           }
         ],
@@ -1335,60 +1100,98 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/BlogPostSummaryDtoPaginatedResultDto"
+                  "$ref": "#/components/schemas/BlogPostDto"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/BlogPostSummaryDtoPaginatedResultDto"
+                  "$ref": "#/components/schemas/BlogPostDto"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/BlogPostSummaryDtoPaginatedResultDto"
+                  "$ref": "#/components/schemas/BlogPostDto"
                 }
               }
             }
           }
         }
-      }
-    },
-    "/api/Blog/posts/featured": {
-      "get": {
+      },
+      "put": {
         "tags": [
           "Blog"
         ],
         "parameters": [
           {
-            "name": "limit",
-            "in": "query",
+            "name": "id",
+            "in": "path",
+            "required": true,
             "schema": {
               "type": "integer",
-              "format": "int32",
-              "default": 5
+              "format": "int32"
             }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateBlogPostDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateBlogPostDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateBlogPostDto"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "OK",
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/BlogPostSummaryDtoPaginatedResultDto"
+                  "$ref": "#/components/schemas/BlogPostDto"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/BlogPostSummaryDtoPaginatedResultDto"
+                  "$ref": "#/components/schemas/BlogPostDto"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/BlogPostSummaryDtoPaginatedResultDto"
+                  "$ref": "#/components/schemas/BlogPostDto"
                 }
               }
             }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Blog"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
           }
         }
       }
@@ -1432,343 +1235,45 @@
         }
       }
     },
-    "/api/Blog/posts/{id}": {
-      "put": {
+    "/api/Blog/all": {
+      "get": {
         "tags": [
           "Blog"
         ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateBlogPostDto"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateBlogPostDto"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateBlogPostDto"
-              }
-            }
-          }
-        },
         "responses": {
           "200": {
             "description": "OK",
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/BlogPostDto"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BlogPostSummaryDto"
+                  }
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/BlogPostDto"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BlogPostSummaryDto"
+                  }
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/BlogPostDto"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BlogPostSummaryDto"
+                  }
                 }
               }
             }
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Blog"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
           }
         }
       }
     },
     "/api/Blog/posts/{id}/publish": {
-      "put": {
-        "tags": [
-          "Blog"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Blog/posts/search": {
-      "get": {
-        "tags": [
-          "Blog"
-        ],
-        "parameters": [
-          {
-            "name": "query",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "page",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32",
-              "default": 1
-            }
-          },
-          {
-            "name": "pageSize",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32",
-              "default": 10
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/BlogPostSummaryDtoPaginatedResultDto"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BlogPostSummaryDtoPaginatedResultDto"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BlogPostSummaryDtoPaginatedResultDto"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/Blog/posts/{postId}/comments": {
-      "get": {
-        "tags": [
-          "Blog"
-        ],
-        "parameters": [
-          {
-            "name": "postId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/BlogCommentDto"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/BlogCommentDto"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/BlogCommentDto"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/Blog/comments": {
-      "post": {
-        "tags": [
-          "Blog"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateBlogCommentDto"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateBlogCommentDto"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateBlogCommentDto"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/BlogCommentDto"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BlogCommentDto"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BlogCommentDto"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/Blog/comments/{id}": {
-      "put": {
-        "tags": [
-          "Blog"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateBlogCommentDto"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateBlogCommentDto"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateBlogCommentDto"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/BlogCommentDto"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BlogCommentDto"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/BlogCommentDto"
-                }
-              }
-            }
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Blog"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Blog/comments/{id}/approve": {
       "put": {
         "tags": [
           "Blog"
@@ -1842,24 +1347,6 @@
             "schema": {
               "type": "string"
             }
-          },
-          {
-            "name": "page",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32",
-              "default": 1
-            }
-          },
-          {
-            "name": "pageSize",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32",
-              "default": 10
-            }
           }
         ],
         "responses": {
@@ -1900,122 +1387,32 @@
         "tags": [
           "Blog"
         ],
-        "parameters": [
-          {
-            "name": "CategoryId",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "CategorySlug",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Tag",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Search",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "Status",
-            "in": "query",
-            "schema": {
-              "$ref": "#/components/schemas/PostStatus"
-            }
-          },
-          {
-            "name": "IsFeatured",
-            "in": "query",
-            "schema": {
-              "type": "boolean"
-            }
-          },
-          {
-            "name": "AuthorId",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "FromDate",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          },
-          {
-            "name": "ToDate",
-            "in": "query",
-            "schema": {
-              "type": "string",
-              "format": "date-time"
-            }
-          },
-          {
-            "name": "Page",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "PageSize",
-            "in": "query",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "SortBy",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          },
-          {
-            "name": "SortOrder",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
         "responses": {
           "200": {
             "description": "OK",
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/BlogPostSummaryDtoPaginatedResultDto"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BlogPostSummaryDto"
+                  }
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/BlogPostSummaryDtoPaginatedResultDto"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BlogPostSummaryDto"
+                  }
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/BlogPostSummaryDtoPaginatedResultDto"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BlogPostSummaryDto"
+                  }
                 }
               }
             }
@@ -2293,30 +1690,208 @@
         }
       }
     },
-    "/api/Journel/analyze": {
+    "/api/JournalEntries": {
       "post": {
         "tags": [
-          "Journel"
+          "JournalEntries"
         ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/JournalEntryRequest"
+                "type": "string"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/JournalEntryRequest"
+                "type": "string"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/JournalEntryRequest"
+                "type": "string"
               }
             }
           }
         },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/JournalEntries/{id}": {
+      "get": {
+        "tags": [
+          "JournalEntries"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "JournalEntries"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "JournalEntries"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/JournalEntries/user/{userId}": {
+      "get": {
+        "tags": [
+          "JournalEntries"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 1
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 10
+            }
+          },
+          {
+            "name": "search",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/JournalEntries/user/{userId}/sentiment-history": {
+      "get": {
+        "tags": [
+          "JournalEntries"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/JournalEntries/user/{userId}/export": {
+      "get": {
+        "tags": [
+          "JournalEntries"
+        ],
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -2541,52 +2116,6 @@
         },
         "additionalProperties": false
       },
-      "BlogCommentDto": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "content": {
-            "type": "string",
-            "nullable": true
-          },
-          "authorName": {
-            "type": "string",
-            "nullable": true
-          },
-          "authorId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "blogPostId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "parentCommentId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "isApproved": {
-            "type": "boolean"
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "replies": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/BlogCommentDto"
-            },
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
       "BlogPostDto": {
         "type": "object",
         "properties": {
@@ -2665,10 +2194,6 @@
               "type": "string"
             },
             "nullable": true
-          },
-          "commentCount": {
-            "type": "integer",
-            "format": "int32"
           }
         },
         "additionalProperties": false
@@ -2722,45 +2247,6 @@
               "type": "string"
             },
             "nullable": true
-          },
-          "commentCount": {
-            "type": "integer",
-            "format": "int32"
-          }
-        },
-        "additionalProperties": false
-      },
-      "BlogPostSummaryDtoPaginatedResultDto": {
-        "type": "object",
-        "properties": {
-          "items": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/BlogPostSummaryDto"
-            },
-            "nullable": true
-          },
-          "totalCount": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "currentPage": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "pageSize": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "hasPreviousPage": {
-            "type": "boolean"
-          },
-          "hasNextPage": {
-            "type": "boolean"
           }
         },
         "additionalProperties": false
@@ -2820,29 +2306,6 @@
           },
           "isActive": {
             "type": "boolean"
-          }
-        },
-        "additionalProperties": false
-      },
-      "CreateBlogCommentDto": {
-        "required": [
-          "blogPostId",
-          "content"
-        ],
-        "type": "object",
-        "properties": {
-          "content": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "blogPostId": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "parentCommentId": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
           }
         },
         "additionalProperties": false
@@ -3010,28 +2473,6 @@
         },
         "additionalProperties": false
       },
-      "JournalEntryRequest": {
-        "type": "object",
-        "properties": {
-          "title": {
-            "type": "string",
-            "nullable": true
-          },
-          "text": {
-            "type": "string",
-            "nullable": true
-          },
-          "mood": {
-            "type": "string",
-            "nullable": true
-          },
-          "date": {
-            "type": "string",
-            "format": "date-time"
-          }
-        },
-        "additionalProperties": false
-      },
       "LoginDto": {
         "required": [
           "email",
@@ -3180,19 +2621,6 @@
           },
           "isActive": {
             "type": "boolean"
-          }
-        },
-        "additionalProperties": false
-      },
-      "UpdateBlogCommentDto": {
-        "required": [
-          "content"
-        ],
-        "type": "object",
-        "properties": {
-          "content": {
-            "minLength": 1,
-            "type": "string"
           }
         },
         "additionalProperties": false

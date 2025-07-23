@@ -24,7 +24,6 @@ namespace MentalHealthApis.DTOs.Blog
         public string MetaDescription { get; set; }
         public string MetaKeywords { get; set; }
         public List<string> Tags { get; set; } = new List<string>();
-        public int CommentCount { get; set; }
     }
 
     public class BlogPostSummaryDto
@@ -40,7 +39,6 @@ namespace MentalHealthApis.DTOs.Blog
         public int ViewCount { get; set; }
         public bool IsFeatured { get; set; }
         public List<string> Tags { get; set; } = new List<string>();
-        public int CommentCount { get; set; }
     }
 
     public class CreateBlogPostDto

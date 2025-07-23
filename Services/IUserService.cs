@@ -1,6 +1,7 @@
 ﻿using MentalHealthApis.DTOs;
 using MentalHealthApis.Models;
 using System.Collections.Generic;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace MentalHealthApis.Services
@@ -12,6 +13,9 @@ namespace MentalHealthApis.Services
         Task<IEnumerable<UserDto>> GetAllUsersAsync(); // For Admin
         Task<UserDto?> UpdateUserAsync(int id, UpdateUserDto updateUserDto, int currentUserId);
         Task<bool> UpdateUserRoleAsync(int id, UserRole newRole); // For Admin
-        // DeleteUserAsync might be needed, but handle cascading deletes carefully
+                                                                  // DeleteUserAsync might be needed, but handle cascading deletes carefully
+        int GetCurrentUserId(ClaimsPrincipal user);
+        Task<bool> CanAccessUserDataAsync(int requesterId, int targetUserId);
+        string? GetUserRole(ClaimsPrincipal user);
     }
 }

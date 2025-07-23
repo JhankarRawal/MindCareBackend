@@ -14,6 +14,7 @@ var builder = WebApplication.CreateBuilder(args);
 // 1. Configure DbContext
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddHttpClient();
 
 // 2. Add services
 builder.Services.AddHttpContextAccessor();
@@ -23,6 +24,8 @@ builder.Services.AddScoped<IDoctorService, DoctorService>();
 builder.Services.AddScoped<IAppointmentService, AppointmentService>();
 builder.Services.AddScoped<IAdminService, AdminService>();
 builder.Services.AddScoped<IBlogService, BlogService>();
+builder.Services.AddScoped<IJournalEntriesService, JournalEntriesService>();
+
 //builder.Services.AddAutoMapper(typeof(Program));
 
 
@@ -102,8 +105,7 @@ builder.Services.AddCors(options =>
               .AllowCredentials();
     });
 });
-builder.Services.AddHttpClient<SentimentService>();
-builder.Services.AddScoped<SentimentService>();
+
 
 
 // 7. Set URLs (for dev convenience)
