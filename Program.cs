@@ -156,7 +156,8 @@ app.Use(async (context, next) =>
     Console.WriteLine($"Request: {context.Request.Method} {context.Request.Path} - {context.Request.Scheme}");
     await next();
 });
-
+// This enables serving files from wwwroot and sets the WebRootPath.
+app.UseStaticFiles();
 // Apply CORS before auth
 app.UseCors("AllowFrontend");
 

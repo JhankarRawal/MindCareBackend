@@ -233,25 +233,26 @@ namespace MentalHealthApis.Controllers.Api
         /// <summary>
         /// Create new blog post (Authenticated users)
         /// </summary>
-        [HttpPost("posts")]
-        [Authorize]
-        public async Task<ActionResult<BlogPostDto>> CreatePost(CreateBlogPostDto dto)
-        {
-            try
-            {
-                var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-                if (string.IsNullOrEmpty(userId))
-                    return Unauthorized();
+      [HttpPost("posts")]
+[Authorize]
+public async Task<ActionResult<BlogPostDto>> CreatePost([FromForm] CreateBlogPostDto dto)
+{
+    try
+    {
+        var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        if (string.IsNullOrEmpty(userId))
+            return Unauthorized();
 
-                var post = await _blogService.CreatePostAsync(dto, userId);
-                return CreatedAtAction(nameof(GetPost), new { slug = post.Slug }, post);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error creating blog post");
-                return StatusCode(500, "Internal server error");
-            }
-        }
+        // The logic to handle the file is now encapsulated within the service
+        var post = await _blogService.CreatePostAsync(dto, userId);
+        return CreatedAtAction(nameof(GetPost), new { slug = post.Slug }, post);
+    }
+    catch (Exception ex)
+    {
+        _logger.LogError(ex, "Error creating blog post");
+        return StatusCode(500, "Internal server error");
+    }
+}
 
         /// <summary>
         /// Update blog post (Author or Admin only)

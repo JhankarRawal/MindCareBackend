@@ -197,12 +197,10 @@ namespace MentalHealthApis.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("MetaDescription")
-                        .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 
                     b.Property<string>("MetaKeywords")
-                        .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
@@ -218,7 +216,6 @@ namespace MentalHealthApis.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Summary")
-                        .IsRequired()
                         .HasMaxLength(500)
                         .HasColumnType("nvarchar(500)");
 

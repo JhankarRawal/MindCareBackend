@@ -1,12 +1,39 @@
 {
   "Version": 1,
-  "Hash": "JkFDjC+ngQ8j66TsR6b0DaKu8mSIxY/LID4Nkj0+JZI=",
+  "Hash": "9ycQn5N2+LnwicxpH3YNn83qGia3CPJ8qEHKsHOj7ps=",
   "Source": "MentalHealthApis",
   "BasePath": "_content/MentalHealthApis",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": [],
-  "Endpoints": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "MentalHealthApis/wwwroot",
+      "Source": "MentalHealthApis",
+      "ContentRoot": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/",
+      "BasePath": "_content/MentalHealthApis",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/uploads/blog/9a26ae35-1af6-46cf-9236-5ea6ed8318d1_viber_image_2025-05-22_09-23-34-591.jpg",
+      "SourceId": "MentalHealthApis",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/",
+      "BasePath": "_content/MentalHealthApis",
+      "RelativePath": "uploads/blog/9a26ae35-1af6-46cf-9236-5ea6ed8318d1_viber_image_2025-05-22_09-23-34-591.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/uploads/blog/9a26ae35-1af6-46cf-9236-5ea6ed8318d1_viber_image_2025-05-22_09-23-34-591.jpg"
+    }
+  ]
 }
