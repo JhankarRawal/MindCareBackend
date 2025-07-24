@@ -25,18 +25,19 @@ namespace MentalHealthApis.Services
         public async Task<List<BlogCategoryDto>> GetCategoriesAsync()
         {
             return await _context.BlogCategories
-                .Where(c => c.IsActive)
-                .OrderBy(c => c.Name)
-                .Select(c => new BlogCategoryDto
-                {
-                    Id = c.Id,
-                    Name = c.Name,
-                    Description = c.Description,
-                    Slug = c.Slug,
-                    IsActive = c.IsActive,
-                    PostCount = c.BlogPosts.Count(p => p.Status == PostStatus.Published)
-                })
-                .ToListAsync();
+    .Where(c => (bool)c.IsActive)
+    .OrderBy(c => c.Name)
+    .Select(c => new BlogCategoryDto
+    {
+        Id = c.Id,
+        Name = c.Name,
+        Description = c.Description,
+        Slug = c.Slug,
+        IsActive = (bool)c.IsActive,
+        PostCount = c.BlogPosts.Count(p => p.Status == PostStatus.Published)
+    })
+    .ToListAsync();
+
         }
 
         public async Task<BlogCategoryDto?> GetCategoryByIdAsync(int id)
@@ -49,7 +50,7 @@ namespace MentalHealthApis.Services
                     Name = c.Name,
                     Description = c.Description,
                     Slug = c.Slug,
-                    IsActive = c.IsActive,
+                    IsActive = (bool)c.IsActive,
                     PostCount = c.BlogPosts.Count(p => p.Status == PostStatus.Published)
                 })
                 .FirstOrDefaultAsync();
