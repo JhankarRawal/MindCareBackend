@@ -59,6 +59,12 @@ builder.Services.AddAuthentication(options =>
 });
 
 builder.Services.AddAuthorization();
+builder.Services.AddHttpClient("SentimentApi", client =>
+{
+    client.BaseAddress = new Uri("http://192.168.18.139:5000");
+    // You can add other default settings here, like headers
+    // client.DefaultRequestHeaders.Add("Accept", "application/json");
+});
 
 // 5. Swagger
 builder.Services.AddEndpointsApiExplorer();

@@ -25,8 +25,9 @@ namespace MentalHealthApis.Services
 
         public async Task<JournalEntryDto> CreateJournalAsync(int userId, string content)
         {
-            var client = _httpFactory.CreateClient("http://192.168.1.67:5000");
-            var sentimentResponse = await client.PostAsJsonAsync("/analyze", new { text = content });
+            var client = _httpFactory.CreateClient("SentimentApi"); 
+              var sentimentResponse = await client.PostAsJsonAsync("/predict", new { text = content });
+               sentimentResponse.EnsureSuccessStatusCode(); 
             var sentimentJson = await sentimentResponse.Content.ReadAsStringAsync();
 
             var entry = new JournalEntry

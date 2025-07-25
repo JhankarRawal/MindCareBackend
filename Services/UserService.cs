@@ -83,11 +83,22 @@ namespace MentalHealthApis.Services
             await _context.SaveChangesAsync();
             return true;
         }
-        public int GetCurrentUserId(ClaimsPrincipal user)
-        {
-            var id = user.FindFirst("user_id")?.Value;
-            return id != null ? int.Parse(id) : throw new UnauthorizedAccessException();
-        }
+     // In: /home/satish-timalsina/Desktop/regression/ha/MindCareBackend/Services/UserService.cs
+
+public int GetCurrentUserId(ClaimsPrincipal user)
+{
+    // Correctly look for the standard "NameIdentifier" claim.
+    var userIdValue = user.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+
+    // Use int.TryParse for safe conversion and provide a clear error message.
+    if (int.TryParse(userIdValue, out int userId))
+    {
+        return userId;
+    }
+
+    // If the claim is missing or not a valid integer, this exception explains why.
+    throw new UnauthorizedAccessException("User ID claim (NameIdentifier) is missing or not in a valid integer format.");
+}
 
         public async Task<bool> CanAccessUserDataAsync(int requesterId, int targetUserId)
         {
