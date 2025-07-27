@@ -3,9 +3,22 @@ using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
 using MentalHealthApis.Services;
 using System.Text;
+using System.ComponentModel.DataAnnotations; // Add this for validation
 
 namespace MentalHealthApis.Controllers
 {
+    // ========= ADD THIS DTO CLASS FOR THE REQUEST BODY =========
+    /// <summary>
+    /// Represents the expected data for creating a journal entry.
+    /// </summary>
+    public class CreateJournalRequest
+    {
+        [Required(ErrorMessage = "Content is required.")]
+        [MinLength(10, ErrorMessage = "Journal content must be at least 10 characters.")]
+        public string Content { get; set; } = string.Empty;
+    }
+
+
     [ApiController]
     [Route("api/[controller]")]
     [Authorize]
@@ -20,13 +33,22 @@ namespace MentalHealthApis.Controllers
             _userService = userService;
         }
 
+        // ========= THIS IS THE CORRECTED METHOD =========
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] string content)
+        public async Task<IActionResult> Create([FromBody] CreateJournalRequest request)
         {
+            // The framework automatically validates the request based on the DTO's attributes.
+            // If validation fails, it will return a 400 Bad Request with details.
+
             var userId = _userService.GetCurrentUserId(User);
-            var result = await _journalService.CreateJournalAsync(userId, content);
+
+            // Pass the content from the request DTO to your service
+            var result = await _journalService.CreateJournalAsync(userId, request.Content);
+            
             return Ok(result);
         }
+
+        // --- All other methods below this line remain unchanged ---
 
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
@@ -44,6 +66,8 @@ namespace MentalHealthApis.Controllers
             return Ok(result);
         }
 
+        // NOTE: This Update method should also be changed to use a DTO in the future,
+        // but for now, we are only fixing the `Create` method.
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, [FromBody] string content)
         {
@@ -51,6 +75,7 @@ namespace MentalHealthApis.Controllers
             var success = await _journalService.UpdateJournalAsync(id, userId, content);
             return success ? Ok() : Forbid();
         }
+
         [HttpGet("user/{userId}/sentiment-history")]
         public async Task<IActionResult> GetSentimentHistory(int userId)
         {
@@ -66,6 +91,7 @@ namespace MentalHealthApis.Controllers
             var success = await _journalService.DeleteJournalAsync(id, userId);
             return success ? Ok() : Forbid();
         }
+
         [HttpGet("user/{userId}/export")]
         public async Task<IActionResult> ExportCsv(int userId)
         {
