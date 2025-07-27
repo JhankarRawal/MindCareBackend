@@ -4,6 +4,10 @@ using MentalHealthApis.Services;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Mvc;
+using System; // Required for Exception
+using System.Threading.Tasks; // Required for Task
+using System.Collections.Generic; // Required for List
+using Microsoft.Extensions.Logging; // Required for ILogger
 
 namespace MentalHealthApis.Controllers.Api
 {
@@ -20,11 +24,8 @@ namespace MentalHealthApis.Controllers.Api
             _logger = logger;
         }
 
-        #region Categories
-
-        /// <summary>
-        /// Get all blog categories
-        /// </summary>
+        // ... (All your existing endpoints like GetCategories, GetPosts, etc. remain unchanged)
+        #region Existing Endpoints
         [HttpGet("categories")]
         public async Task<ActionResult<List<BlogCategoryDto>>> GetCategories()
         {
@@ -40,9 +41,6 @@ namespace MentalHealthApis.Controllers.Api
             }
         }
 
-        /// <summary>
-        /// Get category by ID
-        /// </summary>
         [HttpGet("categories/{id}")]
         public async Task<ActionResult<BlogCategoryDto>> GetCategory(int id)
         {
@@ -61,9 +59,6 @@ namespace MentalHealthApis.Controllers.Api
             }
         }
 
-        /// <summary>
-        /// Get category by slug
-        /// </summary>
         [HttpGet("categories/slug/{slug}")]
         public async Task<ActionResult<BlogCategoryDto>> GetCategoryBySlug(string slug)
         {
@@ -82,9 +77,6 @@ namespace MentalHealthApis.Controllers.Api
             }
         }
 
-        /// <summary>
-        /// Create new category (Admin only)
-        /// </summary>
         [HttpPost("categories")]
         [Authorize(Roles = "Admin")]
         public async Task<ActionResult<BlogCategoryDto>> CreateCategory(CreateBlogCategoryDto dto)
@@ -101,9 +93,6 @@ namespace MentalHealthApis.Controllers.Api
             }
         }
 
-        /// <summary>
-        /// Update category (Admin only)
-        /// </summary>
         [HttpPut("categories/{id}")]
         [Authorize(Roles = "Admin")]
         public async Task<ActionResult<BlogCategoryDto>> UpdateCategory(int id, UpdateBlogCategoryDto dto)
@@ -123,9 +112,6 @@ namespace MentalHealthApis.Controllers.Api
             }
         }
 
-        /// <summary>
-        /// Delete category (Admin only)
-        /// </summary>
         [HttpDelete("categories/{id}")]
         [Authorize(Roles = "Admin")]
         public async Task<ActionResult> DeleteCategory(int id)
@@ -145,13 +131,6 @@ namespace MentalHealthApis.Controllers.Api
             }
         }
 
-        #endregion
-
-        #region Posts
-
-        /// <summary>
-        /// Get all published blog posts
-        /// </summary>
         [HttpGet("posts")]
         public async Task<ActionResult<List<BlogPostSummaryDto>>> GetPosts()
         {
@@ -174,8 +153,7 @@ namespace MentalHealthApis.Controllers.Api
                 var post = await _blogService.GetPostByIdAsync(id);
                 if (post == null)
                     return NotFound();
-
-                // Optionally increment view count
+                
                 await _blogService.IncrementViewCountAsync(post.Id);
 
                 return Ok(post);
@@ -188,9 +166,6 @@ namespace MentalHealthApis.Controllers.Api
         }
 
 
-        /// <summary>
-        /// Get post by slug
-        /// </summary>
         [HttpGet("posts/{slug}")]
         public async Task<ActionResult<BlogPostDto>> GetPost(string slug)
         {
@@ -199,8 +174,7 @@ namespace MentalHealthApis.Controllers.Api
                 var post = await _blogService.GetPostBySlugAsync(slug);
                 if (post == null)
                     return NotFound();
-
-                // Increment view count
+                
                 await _blogService.IncrementViewCountAsync(post.Id);
 
                 return Ok(post);
@@ -212,9 +186,6 @@ namespace MentalHealthApis.Controllers.Api
             }
         }
 
-        /// <summary>
-        /// Get all posts (including unpublished for admin)
-        /// </summary>
         [HttpGet("all")]
         public async Task<ActionResult<List<BlogPostSummaryDto>>> GetAllPosts()
         {
@@ -230,33 +201,26 @@ namespace MentalHealthApis.Controllers.Api
             }
         }
 
-        /// <summary>
-        /// Create new blog post (Authenticated users)
-        /// </summary>
       [HttpPost("posts")]
-[Authorize]
-public async Task<ActionResult<BlogPostDto>> CreatePost([FromForm] CreateBlogPostDto dto)
-{
-    try
+    [Authorize]
+    public async Task<ActionResult<BlogPostDto>> CreatePost([FromForm] CreateBlogPostDto dto)
     {
-        var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-        if (string.IsNullOrEmpty(userId))
-            return Unauthorized();
-
-        // The logic to handle the file is now encapsulated within the service
-        var post = await _blogService.CreatePostAsync(dto, userId);
-        return CreatedAtAction(nameof(GetPost), new { slug = post.Slug }, post);
+        try
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(userId))
+                return Unauthorized();
+            
+            var post = await _blogService.CreatePostAsync(dto, userId);
+            return CreatedAtAction(nameof(GetPost), new { slug = post.Slug }, post);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex, "Error creating blog post");
+            return StatusCode(500, "Internal server error");
+        }
     }
-    catch (Exception ex)
-    {
-        _logger.LogError(ex, "Error creating blog post");
-        return StatusCode(500, "Internal server error");
-    }
-}
 
-        /// <summary>
-        /// Update blog post (Author or Admin only)
-        /// </summary>
         [HttpPut("posts/{id}")]
         [Authorize]
         public async Task<ActionResult<BlogPostDto>> UpdatePost(int id, UpdateBlogPostDto dto)
@@ -284,9 +248,6 @@ public async Task<ActionResult<BlogPostDto>> CreatePost([FromForm] CreateBlogPos
             }
         }
 
-        /// <summary>
-        /// Delete blog post (Author or Admin only)
-        /// </summary>
         [HttpDelete("posts/{id}")]
         [Authorize]
         public async Task<ActionResult> DeletePost(int id)
@@ -314,9 +275,6 @@ public async Task<ActionResult<BlogPostDto>> CreatePost([FromForm] CreateBlogPos
             }
         }
 
-        /// <summary>
-        /// Publish post (Author or Admin only)
-        /// </summary>
         [HttpPut("posts/{id}/publish")]
         [Authorize]
         public async Task<ActionResult> PublishPost(int id)
@@ -343,14 +301,7 @@ public async Task<ActionResult<BlogPostDto>> CreatePost([FromForm] CreateBlogPos
                 return StatusCode(500, "Internal server error");
             }
         }
-        #endregion
 
-
-        #region Tags
-
-        /// <summary>
-        /// Get all tags
-        /// </summary>
         [HttpGet("tags")]
         public async Task<ActionResult<List<string>>> GetTags()
         {
@@ -366,9 +317,6 @@ public async Task<ActionResult<BlogPostDto>> CreatePost([FromForm] CreateBlogPos
             }
         }
 
-        /// <summary>
-        /// Get posts by tag
-        /// </summary>
         [HttpGet("tags/{tag}/posts")]
         public async Task<ActionResult<List<BlogPostSummaryDto>>> GetPostsByTag(string tag)
         {
@@ -384,18 +332,12 @@ public async Task<ActionResult<BlogPostDto>> CreatePost([FromForm] CreateBlogPos
             }
         }
 
-        #endregion
-
-        /// <summary>
-        /// Get all posts for admin (Admin only)
-        /// </summary>
         [HttpGet("admin/posts")]
         [Authorize(Roles = "Admin")]
         public async Task<ActionResult<List<BlogPostSummaryDto>>> GetAllPostsAdmin()
         {
             try
             {
-                // Admin can see all posts regardless of status
                 var posts = await _blogService.GetAllPostsAsync();
                 return Ok(posts);
             }
@@ -405,5 +347,38 @@ public async Task<ActionResult<BlogPostDto>> CreatePost([FromForm] CreateBlogPos
                 return StatusCode(500, "Internal server error");
             }
         }
+        #endregion
+
+        // ========= ADD THIS ENTIRE NEW ENDPOINT =========
+         #region Recommendations
+        /// <summary>
+        /// Gets a list of recommended blog posts based on the user's most recent journal sentiment.
+        /// </summary>
+        [HttpGet("recommendations")]
+        [Authorize]
+        // ========= CHANGE THE RETURN TYPE OF THE ACTION RESULT =========
+        public async Task<ActionResult<List<BlogPostSummaryDto>>> GetBlogRecommendations()
+        {
+            try
+            {
+                var userIdString = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+                if (string.IsNullOrEmpty(userIdString) || !int.TryParse(userIdString, out var userId))
+                {
+                    return Unauthorized("User ID could not be determined from token.");
+                }
+
+                // ========= CALL THE NEW SERVICE METHOD =========
+                var recommendations = await _blogService.GetRecommendedPostsForUserAsync(userId);
+
+                // This now correctly returns a flat list of posts.
+                return Ok(recommendations);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while generating blog recommendations.");
+                return StatusCode(500, "An internal server error occurred.");
+            }
+        }
+        #endregion
     }
 }

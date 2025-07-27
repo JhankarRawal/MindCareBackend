@@ -1,5 +1,7 @@
 ﻿using MentalHealthApis.DTOs;
-using MentalHealthApis.Models;
+using MentalHealthApis.Models; // Required for SentimentFlags
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace MentalHealthApis.Services
 {
@@ -13,6 +15,10 @@ namespace MentalHealthApis.Services
         Task<List<SentimentHistoryPoint>> GetSentimentHistoryAsync(int userId, int requesterId);
         Task<string> ExportJournalsToCsvAsync(int userId, int requesterId);
 
-
+        // ========= ADD THIS NEW METHOD DEFINITION =========
+        /// <summary>
+        /// Gets the sentiment data from the most recent journal entry for a specific user.
+        /// </summary>
+        Task<SentimentFlags?> GetLatestSentimentForUserAsync(int userId);
     }
 }

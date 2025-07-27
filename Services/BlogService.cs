@@ -3,6 +3,13 @@ using MentalHealthApis.Data;
 using MentalHealthApis.DTOs.Blog;
 using MentalHealthApis.Models;
 using MentalHealthApis.Models.Blog;
+using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Hosting;
+using System.Collections.Generic;
+using System.Linq;
+using System;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace MentalHealthApis.Services
 {
@@ -10,18 +17,23 @@ namespace MentalHealthApis.Services
     {
         private readonly ApplicationDbContext _context;
         private readonly ILogger<BlogService> _logger;
-        private readonly IWebHostEnvironment _hostingEnvironment; // FIX: Inject environment to get wwwroot path
+        private readonly IWebHostEnvironment _hostingEnvironment;
+        private readonly IJournalEntriesService _journalService;
 
-        public BlogService(ApplicationDbContext context, ILogger<BlogService> logger, IWebHostEnvironment hostingEnvironment)
+        public BlogService(
+            ApplicationDbContext context,
+            ILogger<BlogService> logger,
+            IWebHostEnvironment hostingEnvironment,
+            IJournalEntriesService journalService)
         {
             _context = context;
             _logger = logger;
-            _hostingEnvironment = hostingEnvironment; // FIX: Initialize environment
+            _hostingEnvironment = hostingEnvironment;
+            _journalService = journalService;
         }
 
-        #region Categories
-
-        // ... (Category methods are correct and remain unchanged)
+        #region Existing Methods
+        // ... All your other methods like GetCategoriesAsync, CreatePostAsync, etc. are correct and remain here ...
         public async Task<List<BlogCategoryDto>> GetCategoriesAsync()
         {
             return await _context.BlogCategories
@@ -127,19 +139,12 @@ namespace MentalHealthApis.Services
             if (category == null) return false;
 
             bool hasPosts = await _context.BlogPosts.AnyAsync(p => p.CategoryId == id);
-            if (hasPosts) return false; // Guard: cannot delete category with posts
+            if (hasPosts) return false; 
 
             _context.BlogCategories.Remove(category);
             await _context.SaveChangesAsync();
             return true;
         }
-
-
-        #endregion
-
-        #region Posts
-
-        // ... (Post retrieval methods are correct and remain unchanged)
 
         public async Task<List<BlogPostSummaryDto>> GetAllPublishedPostsAsync()
         {
@@ -289,10 +294,8 @@ namespace MentalHealthApis.Services
     if (!int.TryParse(authorId, out var parsedAuthorId))
         throw new ArgumentException("Invalid author ID format.");
 
-    string? featuredImagePath = null; // Initialize the path as null
+    string? featuredImagePath = null; 
 
-    // --- Step 1: Handle the file upload ---
-    // If a file was uploaded, save it and get the path.
     if (dto.FeaturedImageFile != null && dto.FeaturedImageFile.Length > 0)
     {
         _logger.LogInformation("FeaturedImageFile is present. Saving file...");
@@ -304,18 +307,13 @@ namespace MentalHealthApis.Services
         _logger.LogWarning("No FeaturedImageFile was uploaded.");
     }
 
-    // --- Step 2: Create the BlogPost entity ---
-    // Use the 'featuredImagePath' variable we just created.
-    // If no file was uploaded, this will be null, and your database will correctly throw an error
-    // (which you can fix by making the column nullable, as described previously).
-    // If a file WAS uploaded, this will contain the correct path.
     var post = new BlogPost
     {
         Title = dto.Title,
         Content = dto.Content,
         Summary = dto.Summary,
         Slug = GenerateSlug(dto.Title),
-        FeaturedImage = featuredImagePath, // This is the corrected assignment
+        FeaturedImage = featuredImagePath,
         CategoryId = dto.CategoryId,
         AuthorId = parsedAuthorId,
         Status = dto.Status,
@@ -330,20 +328,16 @@ namespace MentalHealthApis.Services
     
     _logger.LogInformation("Attempting to save new BlogPost to database...");
 
-    // --- Step 3: Save to the database ---
     await _context.SaveChangesAsync();
     
     _logger.LogInformation("BlogPost saved successfully with ID: {PostId}", post.Id);
 
-
-    // Handle tags after the post has been saved and has an ID
     if (!string.IsNullOrWhiteSpace(dto.Tags))
     {
         var tagNames = dto.Tags.Split(',').Select(t => t.Trim()).ToList();
         await UpdatePostTagsAsync(post.Id, tagNames);
     }
 
-    // Retrieve the newly created post to return it
     var result = await GetPostByIdAsync(post.Id);
     if (result == null)
         throw new Exception("Post creation succeeded but retrieval failed.");
@@ -365,18 +359,8 @@ namespace MentalHealthApis.Services
             if (post.AuthorId != parsedAuthorId && !await IsAdminAsync(parsedAuthorId))
                 throw new UnauthorizedAccessException("Not authorised");
 
-            // FIX: Handle file upload for the update operation
             if (dto.FeaturedImageFile != null)
             {
-                // Optionally, delete the old file before saving the new one
-                // if (!string.IsNullOrEmpty(post.FeaturedImage))
-                // {
-                //    var oldFilePath = Path.Combine(_hostingEnvironment.WebRootPath, post.FeaturedImage.TrimStart('/'));
-                //    if (File.Exists(oldFilePath))
-                //    {
-                //        File.Delete(oldFilePath);
-                //    }
-                // }
                 post.FeaturedImage = await SaveFile(dto.FeaturedImageFile);
             }
 
@@ -394,7 +378,6 @@ namespace MentalHealthApis.Services
             if (dto.Status == PostStatus.Published && post.PublishedAt == null)
                 post.PublishedAt = DateTime.UtcNow;
             
-            // FIX: Correctly check and process the tags string
             if (!string.IsNullOrWhiteSpace(dto.Tags))
             {
                 var tagNames = dto.Tags.Split(',').Select(t => t.Trim()).ToList();
@@ -402,7 +385,6 @@ namespace MentalHealthApis.Services
             } 
             else 
             {
-                // If the tags string is empty, clear existing tags
                 post.Tags.Clear();
             }
 
@@ -456,11 +438,6 @@ namespace MentalHealthApis.Services
             return true;
         }
 
-
-        #endregion
-
-        #region Tags
-
         public async Task<List<string>> GetTagsAsync()
         {
             return await _context.BlogTags
@@ -470,7 +447,6 @@ namespace MentalHealthApis.Services
                 .ToListAsync();
         }
 
-        // FIX: Re-enabled this method
         public async Task<List<BlogPostSummaryDto>> GetPostsByTagAsync(string tag)
         {
             var normalizedTag = tag.ToLowerInvariant();
@@ -499,13 +475,7 @@ namespace MentalHealthApis.Services
                 })
                 .ToListAsync();
         }
-
-
-        #endregion
-
-        #region Helpers
         
-        // FIX: Extracted file saving logic into a reusable helper method
         private async Task<string> SaveFile(IFormFile file)
         {
             var uploadsFolderPath = Path.Combine(_hostingEnvironment.WebRootPath, "uploads", "blog");
@@ -552,7 +522,6 @@ namespace MentalHealthApis.Services
         private static string GenerateSlug(string title) =>
             title.ToLowerInvariant()
                  .Replace(" ", "-")
-                 // Add more character replacements for a robust slug
                  .Replace(".", "")
                  .Replace("?", "")
                  .Replace("!", "")
@@ -563,6 +532,76 @@ namespace MentalHealthApis.Services
         {
             var user = await _context.Users.FindAsync(userId);
             return user?.Role == UserRole.Admin;
+        }
+        #endregion
+
+        #region Recommendations
+        // =================================================================
+        // =========== THIS IS THE NEW, CORRECTED METHOD ============
+        // =================================================================
+        public async Task<List<BlogPostSummaryDto>> GetRecommendedPostsForUserAsync(int userId)
+        {
+            // Step 1: Get the user's latest sentiment
+            var latestSentiment = await _journalService.GetLatestSentimentForUserAsync(userId);
+
+            if (latestSentiment == null)
+            {
+                // Return an empty list if there's no journal history
+                return new List<BlogPostSummaryDto>();
+            }
+
+            // Step 2: Convert the boolean sentiments into a list of search tags
+            var tagsToSearch = new List<string>();
+            if (latestSentiment.Anxiety) tagsToSearch.Add("anxiety");
+            if (latestSentiment.Depression) tagsToSearch.Add("depression");
+            if (latestSentiment.Stress) tagsToSearch.Add("stress");
+            if (latestSentiment.Bipolar) tagsToSearch.Add("bipolar");
+            if (latestSentiment.Suicidal) tagsToSearch.Add("suicide");
+            if (latestSentiment.PersonalityDisorder) tagsToSearch.Add("personality-disorder");
+
+            // If no negative sentiments, recommend general wellness topics
+            if (!tagsToSearch.Any() && latestSentiment.Normal)
+            {
+                tagsToSearch.Add("wellness");
+                tagsToSearch.Add("mindfulness");
+            }
+
+            if (!tagsToSearch.Any())
+            {
+                // No relevant sentiments were detected
+                return new List<BlogPostSummaryDto>();
+            }
+
+            _logger.LogInformation("For user {UserId}, searching for posts with tags: {Tags}", userId, string.Join(", ", tagsToSearch));
+
+            // Step 3: Directly query for blog posts matching the tags
+            var recommendedPosts = await _context.BlogPosts
+                // Filter for posts that are published and in an active category
+                .Where(post => post.Status == PostStatus.Published &&
+                               post.Category.IsActive == true &&
+                               // The post must have at least one tag that is in our search list
+                               post.Tags.Any(tag => tagsToSearch.Contains(tag.Slug)))
+                .OrderByDescending(post => post.PublishedAt)
+                // Project the database result into our desired DTO format
+                .Select(post => new BlogPostSummaryDto
+                {
+                    Id = post.Id,
+                    Title = post.Title,
+                    Summary = post.Summary,
+                    Slug = post.Slug,
+                    FeaturedImage = post.FeaturedImage,
+                    CategoryName = post.Category.Name,
+                    AuthorName = post.Author.Name,
+                    PublishedAt = post.PublishedAt,
+                    ViewCount = post.ViewCount,
+                    IsFeatured = post.IsFeatured,
+                    Tags = post.Tags.Select(t => t.Name).ToList()
+                })
+                .Distinct() // Ensures a post isn't recommended twice if it has multiple matching tags
+                .Take(20)   // Limit the number of recommendations
+                .ToListAsync();
+
+            return recommendedPosts;
         }
 
         #endregion

@@ -7,6 +7,9 @@ using System.Security.Claims;
 using System.Net.Http.Json;
 using MentalHealthApis.DTOs;
 using System.Text;
+using System.Linq; // Required for OrderByDescending
+using System.Threading.Tasks; // Required for Task
+using System.Collections.Generic; // Required for List
 
 namespace MentalHealthApis.Services
 {
@@ -23,6 +26,8 @@ namespace MentalHealthApis.Services
             _httpFactory = httpFactory;
         }
 
+        // ... (All your existing methods like CreateJournalAsync, GetByIdAsync, etc. remain unchanged)
+        #region Existing Methods
         public async Task<JournalEntryDto> CreateJournalAsync(int userId, string content)
         {
             var client = _httpFactory.CreateClient("SentimentApi"); 
@@ -134,7 +139,7 @@ namespace MentalHealthApis.Services
                 Sentiment = JsonSerializer.Deserialize<SentimentFlags>(e.SentimentJson) ?? new SentimentFlags()
             }).ToList();
         }
-            // Existing service methods...
+           
 
             private string GenerateCsv(List<JournalEntryDto> entries)
             {
@@ -151,11 +156,28 @@ namespace MentalHealthApis.Services
                 return sb.ToString();
             }
 
-            // You can add a public method to get CSV string, e.g.:
             public async Task<string> ExportJournalsToCsvAsync(int userId, int requesterId)
             {
                 var journals = await GetByUserAsync(userId, requesterId, page: 1, pageSize: int.MaxValue);
                 return GenerateCsv(journals);
             }
+         #endregion
+
+        // ========= ADD THIS ENTIRE NEW METHOD =========
+        public async Task<SentimentFlags?> GetLatestSentimentForUserAsync(int userId)
+        {
+            var latestEntry = await _context.JournalEntries
+                .Where(j => j.UserId == userId)
+                .OrderByDescending(j => j.EntryDate)   // Get the newest entry by date
+                .ThenByDescending(j => j.CreatedAt) // If dates are the same, get the one created last
+                .FirstOrDefaultAsync();
+
+            if (latestEntry == null || string.IsNullOrEmpty(latestEntry.SentimentJson))
+            {
+                return null;
+            }
+
+            return JsonSerializer.Deserialize<SentimentFlags>(latestEntry.SentimentJson);
         }
+    }
 }
