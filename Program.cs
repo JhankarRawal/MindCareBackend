@@ -25,6 +25,7 @@ builder.Services.AddScoped<IAppointmentService, AppointmentService>();
 builder.Services.AddScoped<IAdminService, AdminService>();
 builder.Services.AddScoped<IBlogService, BlogService>();
 builder.Services.AddScoped<IJournalEntriesService, JournalEntriesService>();
+builder.Services.AddScoped<IDoctorDocumentService, DoctorDocumentService>();
 
 //builder.Services.AddAutoMapper(typeof(Program));
 
