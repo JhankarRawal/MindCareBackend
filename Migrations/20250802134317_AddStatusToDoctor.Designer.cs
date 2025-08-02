@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MentalHealthApis.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250802125750_AddStatusToDoctor")]
+    [Migration("20250802134317_AddStatusToDoctor")]
     partial class AddStatusToDoctor
     {
         /// <inheritdoc />
