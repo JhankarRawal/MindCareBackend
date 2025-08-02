@@ -23,19 +23,20 @@ namespace MentalHealthApis.Models
 
         public bool HasAcceptedTerms { get; set; }
 
-        // --- WE ARE REMOVING ALL OF THESE ---
-        // public string? PasswordSizedPhotoPath { get; set; }
-        // public string? CitizenshipFrontPath { get; set; }
-        // public string? CitizenshipBackPath { get; set; }
-        // public DocumentStatus Status { get; set; } = DocumentStatus.Pending;
-        // public virtual ICollection<DoctorCertificate> Certificates { get; set; } = new List<DoctorCertificate>();
-        // --- END OF REMOVALS ---
+        // --- NEW PROPERTIES FOR APPLICATION TRACKING ---
 
-        // --- ADD THIS SINGLE, UNIFIED COLLECTION ---
+        [Required]
+        [MaxLength(50)]
+        public string ApplicationStatus { get; set; } = "Pending"; // Default status for new applications. Values: "Pending", "Approved", "Rejected"
+
+        public string? AdminNotes { get; set; } // To store the reason for rejection or other admin notes.
+
+        // --- COLLECTIONS ---
+        
         public virtual ICollection<DoctorDocument> Documents { get; set; } = new List<DoctorDocument>();
 
-        // These collections stay the same
         public virtual ICollection<DoctorAvailability> Availabilities { get; set; } = new List<DoctorAvailability>();
+        
         public virtual ICollection<Appointment> Appointments { get; set; } = new List<Appointment>();
     }
 }

@@ -68,11 +68,42 @@ public async Task<ActionResult<IEnumerable<DoctorDocumentAdminViewDto>>> GetDocu
     return Ok(documents);
 }
 
-[HttpPut("documents/{documentId}/verify")]
-public async Task<IActionResult> VerifyDocument(int documentId)
+        [HttpPut("documents/{documentId}/verify")]
+        public async Task<IActionResult> VerifyDocument(int documentId)
+        {
+            var success = await _adminService.VerifyDoctorDocumentAsync(documentId);
+            return success ? NoContent() : NotFound(new { message = "Document not found." });
+        }
+[HttpPatch("doctors/{doctorId}/approve")]
+public async Task<IActionResult> ApproveDoctorApplication(int doctorId)
 {
-    var success = await _adminService.VerifyDoctorDocumentAsync(documentId);
-    return success ? NoContent() : NotFound(new { message = "Document not found." });
+    var success = await _adminService.UpdateDoctorApplicationStatusAsync(doctorId, "Approved", null);
+    if (!success) return NotFound(new { message = "Doctor not found." });
+
+    // Optional but recommended: Update the user's role to grant access.
+    // await _adminService.ActivateDoctorRoleForUser(doctorId);
+
+    return Ok(new { message = "Doctor application approved successfully." });
+}
+
+public class RejectionPayload
+{
+    public string Notes { get; set; }
+}
+
+// This endpoint rejects the entire application for a doctor.
+[HttpPatch("doctors/{doctorId}/reject")]
+public async Task<IActionResult> RejectDoctorApplication(int doctorId, [FromBody] RejectionPayload payload)
+{
+    if (string.IsNullOrWhiteSpace(payload?.Notes))
+    {
+        return BadRequest(new { message = "Rejection notes are required." });
+    }
+
+    var success = await _adminService.UpdateDoctorApplicationStatusAsync(doctorId, "Rejected", payload.Notes);
+    if (!success) return NotFound(new { message = "Doctor not found." });
+
+    return Ok(new { message = "Doctor application rejected successfully." });
 }
 
 // For this endpoint, the admin UI would send a simple JSON body like: { "notes": "Image is blurry." }

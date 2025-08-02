@@ -15,6 +15,7 @@ namespace MentalHealthApis.Services.Interfaces
     Task<IEnumerable<DoctorDocumentAdminViewDto>> GetDocumentsByDoctorIdAsync(int doctorId);
     Task<bool> VerifyDoctorDocumentAsync(int documentId);
     Task<bool> RejectDoctorDocumentAsync(int documentId, string adminNotes);
+       Task<bool> UpdateDoctorApplicationStatusAsync(int doctorId, string status, string? notes);
 
         // Appointment
         Task<IEnumerable<AppointmentDto>> GetAllAppointmentsAsync();

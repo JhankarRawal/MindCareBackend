@@ -81,6 +81,10 @@ namespace MentalHealthApis.Services
         }
 
         public User? GetUserById(int id) => _context.Users.Find(id);
+        public async Task<User> GetUserByIdAsync(int userId)
+    {
+        return await _context.Users.FindAsync(userId);
+    }
 
         Task IAuthService.GetUserById(bool v)
         {
