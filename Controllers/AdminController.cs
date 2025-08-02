@@ -54,6 +54,40 @@ namespace MentalHealthApis.Controllers
         {
             return Ok(await _adminService.GetAllDoctorsAsync());
         }
+        [HttpGet("documents/pending")]
+public async Task<ActionResult<IEnumerable<DoctorDocumentAdminViewDto>>> GetPendingDocuments()
+{
+    var documents = await _adminService.GetPendingDoctorDocumentsAsync();
+    return Ok(documents);
+}
+
+[HttpGet("doctors/{doctorId}/documents")]
+public async Task<ActionResult<IEnumerable<DoctorDocumentAdminViewDto>>> GetDocumentsForDoctor(int doctorId)
+{
+    var documents = await _adminService.GetDocumentsByDoctorIdAsync(doctorId);
+    return Ok(documents);
+}
+
+[HttpPut("documents/{documentId}/verify")]
+public async Task<IActionResult> VerifyDocument(int documentId)
+{
+    var success = await _adminService.VerifyDoctorDocumentAsync(documentId);
+    return success ? NoContent() : NotFound(new { message = "Document not found." });
+}
+
+// For this endpoint, the admin UI would send a simple JSON body like: { "notes": "Image is blurry." }
+public class RejectionDto { public string Notes { get; set; } }
+
+[HttpPut("documents/{documentId}/reject")]
+public async Task<IActionResult> RejectDocument(int documentId, [FromBody] RejectionDto rejection)
+{
+    if (string.IsNullOrWhiteSpace(rejection?.Notes))
+    {
+        return BadRequest(new { message = "Rejection notes are required." });
+    }
+    var success = await _adminService.RejectDoctorDocumentAsync(documentId, rejection.Notes);
+    return success ? NoContent() : NotFound(new { message = "Document not found." });
+}
 
         // --- APPOINTMENT MANAGEMENT ---
 

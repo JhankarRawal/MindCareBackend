@@ -18,7 +18,7 @@ namespace MentalHealthApis.Data
         public DbSet<BlogTag> BlogTags { get; set; }
         public DbSet<BlogComment> BlogComments { get; set; }
         public DbSet<JournalEntry> JournalEntries { get; set; }
-        public DbSet<DoctorCertificate> DoctorCertificates { get; set; }
+        public DbSet<DoctorDocument> DoctorDocuments { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

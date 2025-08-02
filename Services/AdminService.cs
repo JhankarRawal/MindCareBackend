@@ -182,6 +182,64 @@ namespace MentalHealthApis.Services
             await _context.SaveChangesAsync();
             return true;
         }
+        // Add these new methods to your existing AdminService class
+// Make sure this is at the top
+
+// --- DOCTOR DOCUMENT MANAGEMENT ---
+
+public async Task<IEnumerable<DoctorDocumentAdminViewDto>> GetPendingDoctorDocumentsAsync()
+{
+    return await _context.DoctorDocuments
+        .Where(d => d.Status == DocumentStatus.Pending)
+        .Include(d => d.Doctor) // IMPORTANT: This fetches the Doctor's details
+        .Select(d => new DoctorDocumentAdminViewDto
+        {
+            Id = d.Id,
+            DoctorId = d.DoctorId,
+            DoctorName = d.Doctor.Name,
+            DocumentType = d.DocumentType,
+            FilePath = d.FilePath,
+            Status = d.Status.ToString()
+        }).ToListAsync();
+}
+
+public async Task<IEnumerable<DoctorDocumentAdminViewDto>> GetDocumentsByDoctorIdAsync(int doctorId)
+{
+    return await _context.DoctorDocuments
+        .Where(d => d.DoctorId == doctorId)
+        .Include(d => d.Doctor)
+        .Select(d => new DoctorDocumentAdminViewDto
+        {
+            Id = d.Id,
+            DoctorId = d.DoctorId,
+            DoctorName = d.Doctor.Name,
+            DocumentType = d.DocumentType,
+            FilePath = d.FilePath,
+            Status = d.Status.ToString()
+        }).ToListAsync();
+}
+
+public async Task<bool> VerifyDoctorDocumentAsync(int documentId)
+{
+    var document = await _context.DoctorDocuments.FindAsync(documentId);
+    if (document == null) return false;
+
+    document.Status = DocumentStatus.Verified;
+    document.AdminNotes = null; // Clear any previous rejection notes
+    await _context.SaveChangesAsync();
+    return true;
+}
+
+public async Task<bool> RejectDoctorDocumentAsync(int documentId, string adminNotes)
+{
+    var document = await _context.DoctorDocuments.FindAsync(documentId);
+    if (document == null) return false;
+
+    document.Status = DocumentStatus.Rejected;
+    document.AdminNotes = adminNotes; // Save the reason for rejection
+    await _context.SaveChangesAsync();
+    return true;
+}
        
 
 

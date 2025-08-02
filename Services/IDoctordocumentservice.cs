@@ -1,5 +1,4 @@
-// Services/Interfaces/IDoctorDocumentService.cs
-
+using MentalHealthApis.DTOs;
 using System.Threading.Tasks;
 
 public interface IDoctorDocumentService

@@ -24,4 +24,10 @@
         Archived = 2,
         Rejected = 3
     }
+    public enum DocumentStatus
+{
+Pending,
+Verified,
+Rejected
+}
 }

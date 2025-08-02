@@ -1,6 +1,4 @@
-﻿// Models/Doctor.cs - Updated
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace MentalHealthApis.Models
@@ -18,34 +16,26 @@ namespace MentalHealthApis.Models
         public string Specialization { get; set; } = string.Empty;
 
         [MaxLength(200)]
-        public string? ContactInfo { get; set; } // e.g., office phone or email
+        public string? ContactInfo { get; set; }
 
-        // For login, if doctors are also users
-        public int? UserId { get; set; } // Nullable if doctor is not a user (e.g. managed by admin only)
+        public int? UserId { get; set; }
         public virtual User? User { get; set; }
 
-        // --- NEW PROPERTIES FOR DOCUMENT UPLOAD ---
-
-        [MaxLength(255)]
-        public string? PasswordSizedPhotoPath { get; set; }
-
-        [MaxLength(255)]
-        public string? CitizenshipFrontPath { get; set; }
-
-        [MaxLength(255)]
-        public string? CitizenshipBackPath { get; set; }
-        
         public bool HasAcceptedTerms { get; set; }
 
-        [MaxLength(50)]
-        public string? DocumentSubmissionStatus { get; set; } // e.g., "Pending", "UnderReview", "Approved"
-        
-        // --- END NEW PROPERTIES ---
+        // --- WE ARE REMOVING ALL OF THESE ---
+        // public string? PasswordSizedPhotoPath { get; set; }
+        // public string? CitizenshipFrontPath { get; set; }
+        // public string? CitizenshipBackPath { get; set; }
+        // public DocumentStatus Status { get; set; } = DocumentStatus.Pending;
+        // public virtual ICollection<DoctorCertificate> Certificates { get; set; } = new List<DoctorCertificate>();
+        // --- END OF REMOVALS ---
 
+        // --- ADD THIS SINGLE, UNIFIED COLLECTION ---
+        public virtual ICollection<DoctorDocument> Documents { get; set; } = new List<DoctorDocument>();
+
+        // These collections stay the same
         public virtual ICollection<DoctorAvailability> Availabilities { get; set; } = new List<DoctorAvailability>();
         public virtual ICollection<Appointment> Appointments { get; set; } = new List<Appointment>();
-        
-        // Navigation property for the new certificates entity
-        public virtual ICollection<DoctorCertificate> Certificates { get; set; } = new List<DoctorCertificate>();
     }
 }

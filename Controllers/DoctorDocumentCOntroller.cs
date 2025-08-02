@@ -1,5 +1,4 @@
-// Controllers/DoctorDocumentsController.cs
-
+using MentalHealthApis.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -15,9 +14,6 @@ public class DoctorDocumentsController : ControllerBase
     }
 
     [HttpPost("upload")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    [ProducesResponseType(StatusCodes.Status500InternalServerError)]
     public async Task<IActionResult> UploadDocuments([FromForm] DoctorDocumentUploadDto dto)
     {
         if (!ModelState.IsValid)
@@ -32,6 +28,6 @@ public class DoctorDocumentsController : ControllerBase
             return Ok(new { message = "Documents submitted successfully and are now under review." });
         }
 
-        return StatusCode(500, new { message = "An error occurred while processing your documents. Please try again." });
+        return StatusCode(500, new { message = "An error occurred while processing your documents." });
     }
 }

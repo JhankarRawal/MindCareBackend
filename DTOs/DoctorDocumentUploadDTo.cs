@@ -1,26 +1,27 @@
-// DTOs/DoctorDocumentUploadDto.cs
-
 using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-public class DoctorDocumentUploadDto
+namespace MentalHealthApis.DTOs
 {
-    [Required]
-    public string ClientId { get; set; } // This will be the Doctor's ID
+    public class DoctorDocumentUploadDto
+    {
+        [Required]
+        public int DoctorId { get; set; }
 
-    [Required]
-    public IFormFile Passwordsizedphoto { get; set; }
+        [Required(ErrorMessage = "A passport-sized photo is required.")]
+        public IFormFile PasswordSizedPhoto { get; set; }
 
-    [Required]
-    public IFormFile CitizenshipFront { get; set; }
+        [Required(ErrorMessage = "The front of your citizenship is required.")]
+        public IFormFile CitizenshipFront { get; set; }
 
-    [Required]
-    public IFormFile CitizenshipBack { get; set; }
+        [Required(ErrorMessage = "The back of your citizenship is required.")]
+        public IFormFile CitizenshipBack { get; set; }
 
-    // Optional professional certificates
-    public List<IFormFile>? Certificates { get; set; }
+        // This allows for uploading zero or more optional certificates
+        public List<IFormFile>? Certificates { get; set; }
 
-    [Required]
-    [Range(typeof(bool), "true", "true", ErrorMessage = "You must accept the terms and conditions.")]
-    public bool TermsAccepted { get; set; }
+        [Range(typeof(bool), "true", "true", ErrorMessage = "You must accept the terms and conditions.")]
+        public bool HasAcceptedTerms { get; set; }
+    }
 }
