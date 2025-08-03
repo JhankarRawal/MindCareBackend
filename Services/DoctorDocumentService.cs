@@ -27,11 +27,11 @@ public class DoctorDocumentService : IDoctorDocumentService
         {
             if (file == null || file.Length == 0) return;
 
-            // 1. Define where to save the file (e.g., wwwroot/documents/doctors/{doctorId})
+            // 1. Define where to save the file
             var uploadsFolder = Path.Combine(_hostEnvironment.WebRootPath, "documents", "doctors", dto.DoctorId.ToString());
             if (!Directory.Exists(uploadsFolder)) Directory.CreateDirectory(uploadsFolder);
 
-            // 2. Create a unique filename to prevent overwrites
+            // 2. Create a unique filename
             var uniqueFileName = $"{documentType}_{Guid.NewGuid()}{Path.GetExtension(file.FileName)}";
             var filePath = Path.Combine(uploadsFolder, uniqueFileName);
 
@@ -64,8 +64,14 @@ public class DoctorDocumentService : IDoctorDocumentService
             }
         }
         
+        // Update the properties on the existing Doctor object
         doctor.HasAcceptedTerms = dto.HasAcceptedTerms;
-        _context.Doctors.Update(doctor);
+
+        // *** THIS IS THE FIX: Set the application status to "Pending" ***
+        doctor.ApplicationStatus = "Pending";
+
+        // You are already tracking the doctor object, so you don't need _context.Doctors.Update(doctor);
+        // Entity Framework automatically knows it has changed.
 
         // Save everything to the database at once
         return await _context.SaveChangesAsync() > 0;

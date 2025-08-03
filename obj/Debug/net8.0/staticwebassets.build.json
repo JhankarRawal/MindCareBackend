@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "XEQb7E6o27oVpFAB9n1T0kvJ+La8m9lHmMoQcPeAkcc=",
+  "Hash": "PRdPFOS6uAX03mIVPzYDXvBloS1g29Gdip/KTRf6oxM=",
   "Source": "MentalHealthApis",
   "BasePath": "_content/MentalHealthApis",
   "Mode": "Default",
@@ -36,6 +36,25 @@
       "OriginalItemSpec": "wwwroot/documents/doctors/2/Certificate_cf612996-9e9b-4242-bafe-dc34eb9ba4e7.png"
     },
     {
+      "Identity": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/documents/doctors/2/Certificate_ed597216-6c9a-4e9e-ba9b-a0aa582f431e.png",
+      "SourceId": "MentalHealthApis",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/",
+      "BasePath": "_content/MentalHealthApis",
+      "RelativePath": "documents/doctors/2/Certificate_ed597216-6c9a-4e9e-ba9b-a0aa582f431e.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/documents/doctors/2/Certificate_ed597216-6c9a-4e9e-ba9b-a0aa582f431e.png"
+    },
+    {
       "Identity": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/documents/doctors/2/CitizenshipBack_68a3a6fc-21de-45f1-9e55-627f4f1d993c.png",
       "SourceId": "MentalHealthApis",
       "SourceType": "Discovered",
@@ -53,6 +72,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/documents/doctors/2/CitizenshipBack_68a3a6fc-21de-45f1-9e55-627f4f1d993c.png"
+    },
+    {
+      "Identity": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/documents/doctors/2/CitizenshipBack_e0a456ea-cca6-41b2-8951-1ce21738291b.png",
+      "SourceId": "MentalHealthApis",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/",
+      "BasePath": "_content/MentalHealthApis",
+      "RelativePath": "documents/doctors/2/CitizenshipBack_e0a456ea-cca6-41b2-8951-1ce21738291b.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/documents/doctors/2/CitizenshipBack_e0a456ea-cca6-41b2-8951-1ce21738291b.png"
     },
     {
       "Identity": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/documents/doctors/2/CitizenshipFront_19d25a3a-6ff7-4330-b11f-ff1d5d7acb20.png",
@@ -74,6 +112,25 @@
       "OriginalItemSpec": "wwwroot/documents/doctors/2/CitizenshipFront_19d25a3a-6ff7-4330-b11f-ff1d5d7acb20.png"
     },
     {
+      "Identity": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/documents/doctors/2/CitizenshipFront_a15651ae-6e37-404c-99a6-423ceab8f4be.png",
+      "SourceId": "MentalHealthApis",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/",
+      "BasePath": "_content/MentalHealthApis",
+      "RelativePath": "documents/doctors/2/CitizenshipFront_a15651ae-6e37-404c-99a6-423ceab8f4be.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/documents/doctors/2/CitizenshipFront_a15651ae-6e37-404c-99a6-423ceab8f4be.png"
+    },
+    {
       "Identity": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/documents/doctors/2/PasswordSizedPhoto_7036aa04-fa16-4784-97e4-9b1c3a327b7e.png",
       "SourceId": "MentalHealthApis",
       "SourceType": "Discovered",
@@ -91,6 +148,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot/documents/doctors/2/PasswordSizedPhoto_7036aa04-fa16-4784-97e4-9b1c3a327b7e.png"
+    },
+    {
+      "Identity": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/documents/doctors/2/PasswordSizedPhoto_d82614d1-aff0-4ee5-901a-c2e3cef497a0.png",
+      "SourceId": "MentalHealthApis",
+      "SourceType": "Discovered",
+      "ContentRoot": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/",
+      "BasePath": "_content/MentalHealthApis",
+      "RelativePath": "documents/doctors/2/PasswordSizedPhoto_d82614d1-aff0-4ee5-901a-c2e3cef497a0.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot/documents/doctors/2/PasswordSizedPhoto_d82614d1-aff0-4ee5-901a-c2e3cef497a0.png"
     },
     {
       "Identity": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/uploads/blog/0c7e2e4e-ff3a-4b68-a3c0-42badcb94c3c_viber_image_2025-05-22_09-23-34-591.jpg",
