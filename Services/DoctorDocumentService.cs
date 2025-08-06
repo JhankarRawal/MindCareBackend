@@ -64,14 +64,11 @@ public class DoctorDocumentService : IDoctorDocumentService
             }
         }
         
-        // Update the properties on the existing Doctor object
         doctor.HasAcceptedTerms = dto.HasAcceptedTerms;
 
         // *** THIS IS THE FIX: Set the application status to "Pending" ***
         doctor.ApplicationStatus = "Pending";
 
-        // You are already tracking the doctor object, so you don't need _context.Doctors.Update(doctor);
-        // Entity Framework automatically knows it has changed.
 
         // Save everything to the database at once
         return await _context.SaveChangesAsync() > 0;

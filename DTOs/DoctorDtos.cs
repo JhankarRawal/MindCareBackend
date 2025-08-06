@@ -8,7 +8,9 @@ namespace MentalHealthApis.DTOs
         public string Name { get; set; } = string.Empty;
         public string Specialization { get; set; } = string.Empty;
         public string? ContactInfo { get; set; }
-        public int? UserId { get; set; } // If doctor is linked to a user account
+        public int? UserId { get; set; }
+
+        public string? ApplicationStatus { get; set; }// If doctor is linked to a user account
     }
 
     public class CreateDoctorDto
@@ -18,7 +20,8 @@ namespace MentalHealthApis.DTOs
         [Required]
         public string Specialization { get; set; } = string.Empty;
         public string? ContactInfo { get; set; }
-        public int? UserId { get; set; } // Optional: Link to an existing User account (that user should have Doctor role)
+        public int? UserId { get; set; }
+         public string? ApplicationStatus { get; set; } // Optional: Link to an existing User account (that user should have Doctor role)
     }
 
     public class UpdateDoctorDto

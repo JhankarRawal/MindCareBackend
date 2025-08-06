@@ -50,7 +50,8 @@ namespace MentalHealthApis.Services
                 Name = d.Name,
                 Specialization = d.Specialization,
                 ContactInfo = d.ContactInfo,
-                UserId = d.UserId
+                UserId = d.UserId,
+                ApplicationStatus = d.ApplicationStatus
             }).ToListAsync();
         }
 
