@@ -2,16 +2,17 @@
 
 namespace MentalHealthApis.DTOs
 {
-    public class DoctorDto
-    {
-        public int Id { get; set; }
-        public string Name { get; set; } = string.Empty;
-        public string Specialization { get; set; } = string.Empty;
-        public string? ContactInfo { get; set; }
-        public int? UserId { get; set; }
-
-        public string? ApplicationStatus { get; set; }// If doctor is linked to a user account
-    }
+   // In: MentalHealthApis.DTOs/DoctorDto.cs
+public class DoctorDto
+{
+    public int Id { get; set; }
+    public string Name { get; set; } = string.Empty;
+    public string Specialization { get; set; } = string.Empty;
+    public string? ContactInfo { get; set; }
+    public int? UserId { get; set; }
+    public string? ApplicationStatus { get; set; }
+    public string? ProfileImageUrl { get; set; } // <--- Add this
+}
 
     public class CreateDoctorDto
     {

@@ -1,5 +1,6 @@
 // This single class will represent EVERY document: photo, citizenship, license, etc.
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MentalHealthApis.Models
 {
@@ -10,6 +11,8 @@ namespace MentalHealthApis.Models
         // Foreign Key to link back to the Doctor
         [Required]
         public int DoctorId { get; set; }
+
+        [ForeignKey("DoctorId")]
         public virtual Doctor Doctor { get; set; }
 
         // This tells us what kind of document it is.
@@ -23,7 +26,6 @@ namespace MentalHealthApis.Models
         [MaxLength(255)]
         public string FilePath { get; set; }
 
-        // The status now belongs to EACH individual document
         public DocumentStatus Status { get; set; } = DocumentStatus.Pending;
 
         // An optional field for the admin to leave notes (e.g., "Photo is blurry")

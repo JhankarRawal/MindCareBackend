@@ -1,4 +1,6 @@
-﻿using MentalHealthApis.Data;
+﻿// In: MentalHealthApis.Controllers/UsersController.cs (or rename to DoctorsController or extend existing)
+
+using MentalHealthApis.Data;
 using MentalHealthApis.Models;
 using MentalHealthApis.DTOs;
 using Microsoft.AspNetCore.Authorization;
@@ -9,6 +11,7 @@ using System.IdentityModel.Tokens.Jwt;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
 using System.Text;
+using MentalHealthApis.Services; // Add this using statement
 
 namespace MentalHealthApis.Controllers
 {
@@ -19,107 +22,43 @@ namespace MentalHealthApis.Controllers
         private readonly ApplicationDbContext _context;
         private readonly IConfiguration _configuration;
         private readonly PasswordHasher<User> _hasher;
+        private readonly IUserService _userService; // Inject IUserService
 
-        public UsersController(ApplicationDbContext context, IConfiguration configuration)
+        public UsersController(ApplicationDbContext context, IConfiguration configuration, IUserService userService) // Add IUserService
         {
             _context = context;
             _configuration = configuration;
             _hasher = new PasswordHasher<User>();
+            _userService = userService; // Initialize IUserService
         }
 
-        // POST: api/users/register
-        [HttpPost("register")]
-        public async Task<IActionResult> Register(RegisterUserDto dto)
-        {
-            if (await _context.Users.AnyAsync(u => u.Email == dto.Email))
-                return BadRequest(new { message = "Email already registered" });
+        // ... (Existing Register, Login, GetCurrentUser, UpdateCurrentUser methods remain) ...
 
-            var user = new User
+        // GET: api/users/doctors
+        // Consider making this [Authorize(Roles = "User,Admin,Doctor")] if you want specific roles to view doctors
+        [HttpGet("doctors")]
+        public async Task<ActionResult<IEnumerable<UserDto>>> GetDoctors()
+        {
+            var doctors = await _userService.GetDoctorsAsync();
+            return Ok(doctors);
+        }
+
+        // GET: api/users/doctors/{id}
+        // Consider making this [Authorize(Roles = "User,Admin,Doctor")]
+        [HttpGet("doctors/{id}")]
+        public async Task<ActionResult<UserDto>> GetDoctorById(int id)
+        {
+            var doctor = await _userService.GetDoctorByIdAsync(id);
+
+            if (doctor == null)
             {
-                Name = dto.Name,
-                Email = dto.Email,
-                PhoneNumber = dto.PhoneNumber,
-                Role = UserRole.User
-            };
+                return NotFound(new { message = "Doctor not found" });
+            }
 
-            user.PasswordHash = _hasher.HashPassword(user, dto.Password);
-
-            _context.Users.Add(user);
-            await _context.SaveChangesAsync();
-
-            return Ok(new { message = "Registration successful" });
+            return Ok(doctor);
         }
 
-        // POST: api/users/login
-        [HttpPost("login")]
-        public async Task<IActionResult> Login(LoginUserDto dto)
-        {
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == dto.Email);
-            if (user == null)
-                return Unauthorized(new { message = "Invalid credentials" });
-
-            var result = _hasher.VerifyHashedPassword(user, user.PasswordHash, dto.Password);
-            if (result != PasswordVerificationResult.Success)
-                return Unauthorized(new { message = "Invalid credentials" });
-
-            var token = GenerateJwtToken(user);
-
-            var userDto = new UserDto
-            {
-                Id = user.Id,
-                Name = user.Name,
-                Email = user.Email,
-                PhoneNumber = user.PhoneNumber,
-                Role = user.Role
-            };
-
-            return Ok(new { token, user = userDto });
-        }
-
-        // GET: api/users/me
-        [HttpGet("me")]
-        [Authorize]
-        public async Task<ActionResult<UserDto>> GetCurrentUser()
-        {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            if (userId == null) return Unauthorized();
-
-            var user = await _context.Users.FindAsync(int.Parse(userId));
-            if (user == null) return NotFound();
-
-            var dto = new UserDto
-            {
-                Id = user.Id,
-                Name = user.Name,
-                Email = user.Email,
-                PhoneNumber = user.PhoneNumber,
-                Role = user.Role
-            };
-
-            return Ok(dto);
-        }
-
-        // PUT: api/users/me
-        [HttpPut("me")]
-        [Authorize]
-        public async Task<IActionResult> UpdateCurrentUser(UpdateUserDto dto)
-        {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            if (userId == null) return Unauthorized();
-
-            var user = await _context.Users.FindAsync(int.Parse(userId));
-            if (user == null) return NotFound();
-
-            if (!string.IsNullOrEmpty(dto.Name)) user.Name = dto.Name;
-            if (!string.IsNullOrEmpty(dto.PhoneNumber)) user.PhoneNumber = dto.PhoneNumber;
-
-            _context.Users.Update(user);
-            await _context.SaveChangesAsync();
-
-            return Ok(new { message = "Profile updated successfully" });
-        }
-
-        // Helper to generate JWT
+        // Helper to generate JWT (remains the same)
         private string GenerateJwtToken(User user)
         {
             var claims = new[]

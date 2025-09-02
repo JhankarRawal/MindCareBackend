@@ -1,4 +1,6 @@
-﻿using MentalHealthApis.Data;
+﻿// In: MentalHealthApis.Services/UserService.cs
+
+using MentalHealthApis.Data;
 using MentalHealthApis.DTOs;
 using MentalHealthApis.Models;
 using Microsoft.EntityFrameworkCore;
@@ -41,16 +43,33 @@ namespace MentalHealthApis.Services
                 .ToListAsync();
         }
 
+        // New: Get all users with Role.Doctor
+        public async Task<IEnumerable<UserDto>> GetDoctorsAsync()
+        {
+            return await _context.Users
+                .Where(u => u.Role == UserRole.Doctor)
+                .Select(user => MapUserToDto(user))
+                .ToListAsync();
+        }
+
+        // New: Get a single doctor by ID
+        public async Task<UserDto?> GetDoctorByIdAsync(int id)
+        {
+            var doctor = await _context.Users
+                .Where(u => u.Id == id && u.Role == UserRole.Doctor)
+                .FirstOrDefaultAsync();
+
+            if (doctor == null) return null;
+
+            return MapUserToDto(doctor);
+        }
+
         public async Task<UserDto?> UpdateUserAsync(int id, UpdateUserDto updateUserDto, int currentUserId)
         {
-            // Ensure user is updating themselves or an admin is doing it.
-            // This check is usually better handled by controller authorization,
-            // but can be an additional layer here.
             if (id != currentUserId)
             {
-                // Here you might check if currentUserId has Admin role if you want Admin to update any user.
-                // For now, let's assume only self-update is handled by this specific method call pattern.
-                // The controller would differentiate.
+                // Optionally add role-based authorization here if you want admins to update others.
+                // For now, assume this is for self-update or specific admin methods will handle it.
             }
 
             var user = await _context.Users.FindAsync(id);
@@ -64,7 +83,6 @@ namespace MentalHealthApis.Services
             {
                 user.PhoneNumber = updateUserDto.PhoneNumber;
             }
-            // Password updates should be handled via a separate, more secure flow (e.g., ChangePasswordDto)
 
             _context.Users.Update(user);
             await _context.SaveChangesAsync();
@@ -77,28 +95,23 @@ namespace MentalHealthApis.Services
             var user = await _context.Users.FindAsync(id);
             if (user == null) return false;
 
-            // Add any business logic for role changes (e.g., ensuring not last admin)
             user.Role = newRole;
             _context.Users.Update(user);
             await _context.SaveChangesAsync();
             return true;
         }
-     // In: /home/satish-timalsina/Desktop/regression/ha/MindCareBackend/Services/UserService.cs
 
-public int GetCurrentUserId(ClaimsPrincipal user)
-{
-    // Correctly look for the standard "NameIdentifier" claim.
-    var userIdValue = user.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+        public int GetCurrentUserId(ClaimsPrincipal user)
+        {
+            var userIdValue = user.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
 
-    // Use int.TryParse for safe conversion and provide a clear error message.
-    if (int.TryParse(userIdValue, out int userId))
-    {
-        return userId;
-    }
+            if (int.TryParse(userIdValue, out int userId))
+            {
+                return userId;
+            }
 
-    // If the claim is missing or not a valid integer, this exception explains why.
-    throw new UnauthorizedAccessException("User ID claim (NameIdentifier) is missing or not in a valid integer format.");
-}
+            throw new UnauthorizedAccessException("User ID claim (NameIdentifier) is missing or not in a valid integer format.");
+        }
 
         public async Task<bool> CanAccessUserDataAsync(int requesterId, int targetUserId)
         {
@@ -118,11 +131,8 @@ public int GetCurrentUserId(ClaimsPrincipal user)
         {
             return user.FindFirst("role")?.Value;
         }
-    
 
-
-// Private helper for mapping
-private static UserDto MapUserToDto(User user)
+        private static UserDto MapUserToDto(User user)
         {
             return new UserDto
             {
