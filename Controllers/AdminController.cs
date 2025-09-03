@@ -77,14 +77,12 @@ public async Task<ActionResult<IEnumerable<DoctorDocumentAdminViewDto>>> GetDocu
 [HttpPatch("doctors/{doctorId}/approve")]
 public async Task<IActionResult> ApproveDoctorApplication(int doctorId)
 {
-    var success = await _adminService.UpdateDoctorApplicationStatusAsync(doctorId, "Approved", null);
+    var success = await _adminService.ApproveDoctorApplicationAndPromoteUserAsync(doctorId);
     if (!success) return NotFound(new { message = "Doctor not found." });
 
-    // Optional but recommended: Update the user's role to grant access.
-    // await _adminService.ActivateDoctorRoleForUser(doctorId);
-
-    return Ok(new { message = "Doctor application approved successfully." });
+    return Ok(new { message = "Doctor application approved and user role promoted successfully." });
 }
+
 
 public class RejectionPayload
 {

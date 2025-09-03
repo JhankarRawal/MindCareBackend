@@ -3,6 +3,8 @@ using MentalHealthApis.DTOs;
 using MentalHealthApis.Models;
 using MentalHealthApis.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using System.Diagnostics; // Added for Debug.WriteLine (alternative to Console.WriteLine)
 
 namespace MentalHealthApis.Services
 {
@@ -10,11 +12,13 @@ namespace MentalHealthApis.Services
     {
         private readonly ApplicationDbContext _context;
         private readonly IAppointmentService _appointmentService;
+        private readonly ILogger<AdminService> _logger;
 
-        public AdminService(ApplicationDbContext context, IAppointmentService appointmentService)
+        public AdminService(ApplicationDbContext context, IAppointmentService appointmentService, ILogger<AdminService> logger)
         {
             _context = context;
             _appointmentService = appointmentService;
+            _logger = logger;
         }
 
         // --- Users ---
@@ -26,7 +30,7 @@ namespace MentalHealthApis.Services
                 Name = u.Name,
                 Email = u.Email,
                 PhoneNumber = u.PhoneNumber,
-                Role = u.Role
+                Role = u.Role,
             }).ToListAsync();
         }
 
@@ -36,7 +40,24 @@ namespace MentalHealthApis.Services
             if (user == null) return false;
 
             user.Role = newRole;
-            _context.Entry(user).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
+        public async Task<bool> DeactivateUserAsync(int userId)
+        {
+            var user = await _context.Users.FindAsync(userId);
+            if (user == null) return false;
+            user.IsActive = false;
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
+        public async Task<bool> ReactivateUserAsync(int userId)
+        {
+            var user = await _context.Users.FindAsync(userId);
+            if (user == null) return false;
+            user.IsActive = true;
             await _context.SaveChangesAsync();
             return true;
         }
@@ -55,10 +76,123 @@ namespace MentalHealthApis.Services
             }).ToListAsync();
         }
 
+        // --- NEW: Approve Doctor Application and Promote User Role (Scenario 2) ---
+        public async Task<bool> ApproveDoctorApplicationAndPromoteUserAsync(int doctorId)
+        {
+            // Eagerly load the associated User to avoid a separate query later
+            var doctor = await _context.Doctors.Include(d => d.User).FirstOrDefaultAsync(d => d.Id == doctorId);
+            if (doctor == null)
+            {
+                _logger.LogWarning($"ApproveDoctorApplicationAndPromoteUserAsync: Doctor not found for doctorId: {doctorId}");
+                return false;
+            }
+            if (doctor.User == null)
+            {
+                _logger.LogError($"ApproveDoctorApplicationAndPromoteUserAsync: User associated with doctorId: {doctorId} not found.");
+                return false;
+            }
+
+            // Update doctor's application status
+            doctor.ApplicationStatus = "Approved"; // Assuming "Approved" is the desired string status
+            doctor.AdminNotes = "Doctor application approved by admin.";
+
+            // Promote user role if they are not already a doctor
+            if (doctor.User.Role != UserRole.Doctor)
+            {
+                _logger.LogInformation($"ApproveDoctorApplicationAndPromoteUserAsync: Promoting user {doctor.User.Id} (Doctor {doctorId}) from role {doctor.User.Role} to {UserRole.Doctor}.");
+                doctor.User.Role = UserRole.Doctor;
+            }
+            else
+            {
+                _logger.LogInformation($"ApproveDoctorApplicationAndPromoteUserAsync: User {doctor.User.Id} (Doctor {doctorId}) is already a Doctor. Role not changed.");
+            }
+            
+            // --- START DEBUGGING / LOGGING CODE (similar to what you had) ---
+            _logger.LogDebug("--- Entity Framework Change Tracker State before SaveChangesAsync for ApproveDoctorApplicationAndPromoteUserAsync ---");
+            var entries = _context.ChangeTracker.Entries();
+            foreach (var entry in entries)
+            {
+                _logger.LogDebug($"  Entity: {entry.Entity.GetType().Name}, State: {entry.State}");
+                if (entry.State == EntityState.Modified)
+                {
+                    foreach (var prop in entry.Properties)
+                    {
+                        if (prop.IsModified)
+                        {
+                            _logger.LogDebug($"    Property: {prop.Metadata.Name}, Original: {prop.OriginalValue}, Current: {prop.CurrentValue}");
+                        }
+                    }
+                }
+            }
+            _logger.LogDebug("---------------------------------------------------------------------------------------------------------");
+            // --- END DEBUGGING / LOGGING CODE ---
+
+            try
+            {
+                await _context.SaveChangesAsync();
+                _logger.LogInformation($"ApproveDoctorApplicationAndPromoteUserAsync: Successfully approved doctor application {doctorId} and ensured user {doctor.User.Id} has role {UserRole.Doctor}.");
+                return true;
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                _logger.LogError(ex, $"ApproveDoctorApplicationAndPromoteUserAsync: Concurrency error updating doctor {doctorId} or user {doctor.User.Id}.");
+                return false;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"ApproveDoctorApplicationAndPromoteUserAsync: General error saving changes for doctor {doctorId} or user {doctor.User.Id}.");
+                return false;
+            }
+        }
+
+        public async Task<bool> UpdateDoctorApplicationStatusAsync(int doctorId, string status, string? notes)
+        {
+            var doctor = await _context.Doctors.FirstOrDefaultAsync(d => d.Id == doctorId);
+            if (doctor == null)
+            {
+                return false;
+            }
+
+            doctor.ApplicationStatus = status;
+            doctor.AdminNotes = notes;
+
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
+
         // --- Appointments ---
         public async Task<IEnumerable<AppointmentDto>> GetAllAppointmentsAsync()
         {
             return await _appointmentService.GetAllAppointmentsAsync();
+        }
+
+        public async Task<IEnumerable<AppointmentDto>> GetAppointmentsByStatusAsync(string status)
+        {
+            if (!Enum.TryParse<AppointmentStatus>(status, true, out var statusEnum))
+            {
+                return new List<AppointmentDto>();
+            }
+
+            return await _context.Appointments
+                .Where(a => a.Status == statusEnum)
+                .Select(a => new AppointmentDto
+                {
+                    Id = a.Id,
+                    UserId = a.UserId,
+                    DoctorId = a.DoctorId,
+                    AppointmentDateTime = a.AppointmentDateTime,
+                    Status = a.Status
+                }).ToListAsync();
+        }
+
+        public async Task<bool> CancelAppointmentAsync(int appointmentId)
+        {
+            var appointment = await _context.Appointments.FindAsync(appointmentId);
+            if (appointment == null) return false;
+            appointment.Status = AppointmentStatus.CancelledByAdmin;
+            await _context.SaveChangesAsync();
+            return true;
         }
 
         // --- Doctor Availability ---
@@ -108,6 +242,7 @@ namespace MentalHealthApis.Services
             return true;
         }
 
+        // --- Blog Posts ---
         public async Task<IEnumerable<BlogPostAdminDto>> GetAllBlogPostsAsync()
         {
             return await _context.BlogPosts
@@ -135,51 +270,6 @@ namespace MentalHealthApis.Services
             var post = await _context.BlogPosts.FindAsync(postId);
             if (post == null) return false;
             post.Status = PostStatus.Rejected;
-            await _context.SaveChangesAsync();
-            return true;
-        }
-        public async Task<bool> DeactivateUserAsync(int userId)
-        {
-            var user = await _context.Users.FindAsync(userId);
-            if (user == null) return false;
-            user.IsActive = false;
-            await _context.SaveChangesAsync();
-            return true;
-        }
-
-        public async Task<bool> ReactivateUserAsync(int userId)
-        {
-            var user = await _context.Users.FindAsync(userId);
-            if (user == null) return false;
-            user.IsActive = true;
-            await _context.SaveChangesAsync();
-            return true;
-        }
-        public async Task<IEnumerable<AppointmentDto>> GetAppointmentsByStatusAsync(string status)
-        {
-            if (!Enum.TryParse<AppointmentStatus>(status, true, out var statusEnum))
-            {
-                return new List<AppointmentDto>();
-            }
-
-            return await _context.Appointments
-                .Where(a => a.Status == statusEnum)
-                .Select(a => new AppointmentDto
-                {
-                    Id = a.Id,
-                    UserId = a.UserId,
-                    DoctorId = a.DoctorId,
-                    AppointmentDateTime = a.AppointmentDateTime,
-                    Status = a.Status
-                }).ToListAsync();
-        }
-
-
-        public async Task<bool> CancelAppointmentAsync(int appointmentId)
-        {
-            var appointment = await _context.Appointments.FindAsync(appointmentId);
-            if (appointment == null) return false;
-            appointment.Status = AppointmentStatus.CancelledByAdmin;
             await _context.SaveChangesAsync();
             return true;
         }
@@ -223,10 +313,36 @@ namespace MentalHealthApis.Services
             var document = await _context.DoctorDocuments.FindAsync(documentId);
             if (document == null) return false;
 
+            // Mark document as verified
             document.Status = DocumentStatus.Verified;
             document.AdminNotes = null;
-            await _context.SaveChangesAsync();
-            return true;
+
+            // Find the user associated with this doctor document
+            // This method *only* verifies the document, not promotes the role.
+            // Role promotion is now handled by ApproveDoctorApplicationAndPromoteUserAsync
+            
+            // The original logic to promote user role here has been commented out
+            // because the new method (ApproveDoctorApplicationAndPromoteUserAsync)
+            // is designed to handle that. If you need a document verification
+            // to also promote the role, you'd integrate the role change here again
+            // or ensure this is called before the main approval.
+            
+            try
+            {
+                await _context.SaveChangesAsync();
+                _logger.LogInformation($"VerifyDoctorDocumentAsync: Successfully updated document {document.Id} to {document.Status}.");
+                return true;
+            }
+            catch (DbUpdateConcurrencyException ex)
+            {
+                _logger.LogError(ex, $"VerifyDoctorDocumentAsync: Concurrency error updating document {document.Id}.");
+                return false;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"VerifyDoctorDocumentAsync: General error saving changes for document {document.Id}.");
+                return false;
+            }
         }
 
         public async Task<bool> RejectDoctorDocumentAsync(int documentId, string adminNotes)
@@ -239,21 +355,5 @@ namespace MentalHealthApis.Services
             await _context.SaveChangesAsync();
             return true;
         }
-
-        public async Task<bool> UpdateDoctorApplicationStatusAsync(int doctorId, string status, string? notes)
-        {
-            var doctor = await _context.Doctors.FirstOrDefaultAsync(d => d.Id == doctorId);
-            if (doctor == null)
-            {
-                return false;
-            }
-
-            doctor.ApplicationStatus = status;
-            doctor.AdminNotes = notes;
-
-            await _context.SaveChangesAsync();
-            return true;
-        }
-        
-    } // This is now the ONLY closing brace for the AdminService class.
-} // This is the closing brace for the namespace.
+    }
+}
