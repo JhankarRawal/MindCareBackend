@@ -70,6 +70,7 @@ namespace MentalHealthApis.Controllers
                 Role = loggedInUser.Role,
                 DoctorInfo = doctor != null ? new DoctorInfoResponseDto
                 {
+                    DoctorId = doctor.Id, 
                     ApplicationStatus = doctor.ApplicationStatus,
                     RejectionReason = doctor.AdminNotes
                 } : null

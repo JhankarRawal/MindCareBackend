@@ -82,7 +82,7 @@ namespace MentalHealthApis.Controllers
         // POST: api/doctors/{doctorId}/availability
         [HttpPost("{doctorId}/availability")]
         [Authorize(Roles = "Doctor,Admin")]
-        public async Task<ActionResult<DoctorAvailabilityDto>> SetDoctorAvailability(int doctorId, CreateDoctorAvailabilityDto dto)
+        public async Task<ActionResult<CreateDoctorAvailabilityDto>> SetDoctorAvailability(int doctorId, CreateDoctorAvailabilityDto dto)
         {
             var currentUserId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
             var currentUserRole = Enum.Parse<UserRole>(User.FindFirstValue(ClaimTypes.Role)!);

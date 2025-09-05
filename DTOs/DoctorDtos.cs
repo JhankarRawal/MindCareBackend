@@ -2,7 +2,6 @@
 
 namespace MentalHealthApis.DTOs
 {
-   // In: MentalHealthApis.DTOs/DoctorDto.cs
 public class DoctorDto
 {
     public int Id { get; set; }

@@ -8,6 +8,7 @@ namespace MentalHealthApis.DTOs
     {
         public string ApplicationStatus { get; set; }
         public string? RejectionReason { get; set; }
+         public int DoctorId { get; set; } 
     }
 
     // This is your SINGLE definition for UserDto
