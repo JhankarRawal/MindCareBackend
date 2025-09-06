@@ -73,44 +73,78 @@ namespace MentalHealthApis.Services
                 }
             }
 
-            var appointment = new Appointment
-            {
-                UserId = bookingUserId,
-                DoctorId = createDto.DoctorId,
-                AppointmentDateTime = createDto.AppointmentDateTime,
-                DurationMinutes = createDto.DurationMinutes,
-                UserNotes = createDto.UserNotes,
-                Status = AppointmentStatus.Pending, // Or Confirmed if no further doctor action needed
-                DoctorAvailabilitySlotId = availabilitySlot?.Id
-            };
+             var appointment = new Appointment
+        {
+            UserId = bookingUserId,
+            DoctorId = createDto.DoctorId,
+            AppointmentDateTime = createDto.AppointmentDateTime,
+            DurationMinutes = createDto.DurationMinutes,
+            UserNotes = createDto.UserNotes,
+            Status = AppointmentStatus.Pending,
+            DoctorAvailabilitySlotId = availabilitySlot?.Id,
+            ShareSentimentHistory = createDto.ShareSentimentHistory // Assign the new property
+        };
 
-            _context.Appointments.Add(appointment);
+        // If user wants to share sentiment history, fetch relevant journal entries
+        if (createDto.ShareSentimentHistory)
+        {
+            // Retrieve recent journal entries with their sentiment JSON
+            var recentJournalEntries = await _context.JournalEntries // <--- CORRECTED: Using JournalEntries DbSet
+                                                .Where(j => j.UserId == bookingUserId)
+                                                .OrderByDescending(j => j.EntryDate) // Order by entry date for recency
+                                                .Take(5) // Get the last 5 entries, adjust as needed
+                                                .Select(j => new { j.EntryDate, j.Content, j.SentimentJson }) // Select relevant fields from JournalEntry
+                                                .ToListAsync();
 
-            if (availabilitySlot != null)
+            if (recentJournalEntries.Any())
             {
-                availabilitySlot.IsBooked = true;
-                _context.DoctorAvailabilities.Update(availabilitySlot);
+                // Build a string that consolidates the journal entries and their sentiment
+                var sentimentHistoryBuilder = new System.Text.StringBuilder();
+                sentimentHistoryBuilder.AppendLine("--- User Journal Sentiment History (Shared by User) ---");
+
+                foreach (var entry in recentJournalEntries)
+                {
+                    sentimentHistoryBuilder.AppendLine($"\nEntry Date: {entry.EntryDate:yyyy-MM-dd HH:mm}");
+                    sentimentHistoryBuilder.AppendLine($"Content Snippet: {entry.Content.Substring(0, Math.Min(entry.Content.Length, 100))}..."); // Show first 100 chars
+                    sentimentHistoryBuilder.AppendLine($"Sentiment Data: {entry.SentimentJson}"); // <--- CORRECTED: Using SentimentJson from JournalEntry
+                    sentimentHistoryBuilder.AppendLine("--------------------");
+                }
+
+                // Append this consolidated string to the UserNotes
+                appointment.UserNotes = (appointment.UserNotes != null ? appointment.UserNotes + "\n\n" : "") +
+                                        sentimentHistoryBuilder.ToString();
             }
+        }
 
-            await _context.SaveChangesAsync();
+        _context.Appointments.Add(appointment);
 
-            // Fetch related data for DTO
-            var user = await _context.Users.FindAsync(bookingUserId);
-            // Doctor already fetched
+        if (availabilitySlot != null)
+        {
+            availabilitySlot.IsBooked = true;
+            _context.DoctorAvailabilities.Update(availabilitySlot);
+        }
 
-            return new AppointmentDto
-            {
-                Id = appointment.Id,
-                UserId = appointment.UserId,
-                UserName = user?.Name ?? "N/A",
-                DoctorId = appointment.DoctorId,
-                DoctorName = doctor.Name,
-                AppointmentDateTime = appointment.AppointmentDateTime,
-                DurationMinutes = appointment.DurationMinutes,
-                Status = appointment.Status,
-                UserNotes = appointment.UserNotes,
-                CreatedAt = appointment.CreatedAt,
-                UpdatedAt = appointment.UpdatedAt
+        await _context.SaveChangesAsync();
+
+        // Fetch related data for DTO
+        var user = await _context.Users.FindAsync(bookingUserId);
+        // Doctor already fetched
+
+        return new AppointmentDto
+        {
+            Id = appointment.Id,
+            UserId = appointment.UserId,
+            UserName = user?.Name ?? "N/A",
+            DoctorId = appointment.DoctorId,
+            DoctorName = doctor.Name,
+            AppointmentDateTime = appointment.AppointmentDateTime,
+            DurationMinutes = appointment.DurationMinutes,
+            Status = appointment.Status,
+            UserNotes = appointment.UserNotes, // Ensure updated notes are included
+            CreatedAt = appointment.CreatedAt,
+            UpdatedAt = appointment.UpdatedAt,
+            ShareSentimentHistory = appointment.ShareSentimentHistory // Map the new property
+        
             };
         }
 

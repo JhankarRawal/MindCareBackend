@@ -38,5 +38,6 @@ namespace MentalHealthApis.Models
         public int? DoctorAvailabilitySlotId { get; set; }
         [ForeignKey("DoctorAvailabilitySlotId")]
         public virtual DoctorAvailability? DoctorAvailabilitySlot { get; set; }
+         public bool ShareSentimentHistory { get; set; } = false;
     }
 }

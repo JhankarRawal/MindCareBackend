@@ -1,4 +1,5 @@
-﻿using MentalHealthApis.Models; // For AppointmentStatus
+﻿// MentalHealthApis.DTOs/AppointmentDto.cs
+using MentalHealthApis.Models; // For AppointmentStatus
 using System.ComponentModel.DataAnnotations;
 
 namespace MentalHealthApis.DTOs
@@ -17,6 +18,8 @@ namespace MentalHealthApis.DTOs
         public string? DoctorNotes { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
+        // NEW: Add the ShareSentimentHistory flag to the DTO
+        public bool ShareSentimentHistory { get; set; } 
     }
 
     public class CreateAppointmentDto
@@ -29,7 +32,8 @@ namespace MentalHealthApis.DTOs
         public DateTime AppointmentDateTime { get; set; }
         public int DurationMinutes { get; set; } = 60;
         public string? UserNotes { get; set; }
-        public int? DoctorAvailabilitySlotId { get; set; } // If booking against a specific slot
+        public int? DoctorAvailabilitySlotId { get; set; }
+        public bool ShareSentimentHistory { get; set; } = false;
     }
 
     public class RescheduleAppointmentDto
