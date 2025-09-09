@@ -6,8 +6,6 @@ using System.Security.Claims; // For HttpContextAccessor
 
 namespace MentalHealthApis.Services
 {
-    
-
     public class AppointmentService : IAppointmentService
     {
         public readonly ApplicationDbContext _context;
@@ -166,7 +164,8 @@ namespace MentalHealthApis.Services
                     UserNotes = a.UserNotes,
                     DoctorNotes = a.DoctorNotes,
                     CreatedAt = a.CreatedAt,
-                    UpdatedAt = a.UpdatedAt
+                    UpdatedAt = a.UpdatedAt,
+                    ShareSentimentHistory = a.ShareSentimentHistory
                 })
                 .ToListAsync();
         }
@@ -189,7 +188,8 @@ namespace MentalHealthApis.Services
                    UserNotes = a.UserNotes,
                    DoctorNotes = a.DoctorNotes,
                    CreatedAt = a.CreatedAt,
-                   UpdatedAt = a.UpdatedAt
+                   UpdatedAt = a.UpdatedAt,
+                   ShareSentimentHistory = a.ShareSentimentHistory
                })
                .ToListAsync();
         }
@@ -212,7 +212,8 @@ namespace MentalHealthApis.Services
                    UserNotes = a.UserNotes,
                    DoctorNotes = a.DoctorNotes,
                    CreatedAt = a.CreatedAt,
-                   UpdatedAt = a.UpdatedAt
+                   UpdatedAt = a.UpdatedAt,
+                   ShareSentimentHistory = a.ShareSentimentHistory
                })
                .ToListAsync();
         }
@@ -239,7 +240,8 @@ namespace MentalHealthApis.Services
                 UserNotes = appointment.UserNotes,
                 DoctorNotes = appointment.DoctorNotes,
                 CreatedAt = appointment.CreatedAt,
-                UpdatedAt = appointment.UpdatedAt
+                UpdatedAt = appointment.UpdatedAt,
+                ShareSentimentHistory = appointment.ShareSentimentHistory
             };
         }
 
@@ -320,6 +322,7 @@ namespace MentalHealthApis.Services
         {
             var appointment = await _context.Appointments
                                     .Include(a => a.DoctorAvailabilitySlot)
+                                    .Include(a => a.Doctor) // Include Doctor to check UserId
                                     .FirstOrDefaultAsync(a => a.Id == appointmentId);
             if (appointment == null) return false;
 
@@ -332,12 +335,14 @@ namespace MentalHealthApis.Services
                                 (newStatus == AppointmentStatus.CancelledByUser) &&
                                 (appointment.Status == AppointmentStatus.Pending || appointment.Status == AppointmentStatus.Confirmed || appointment.Status == AppointmentStatus.Rescheduled)) ||
                                (currentUserRole == UserRole.Doctor && appointment.Doctor != null && appointment.Doctor.UserId == currentUserId && // Assuming Doctor has a UserId link
-                                (newStatus == AppointmentStatus.Completed || newStatus == AppointmentStatus.CancelledByDoctor));
+                                (newStatus == AppointmentStatus.Completed || newStatus == AppointmentStatus.CancelledByDoctor || newStatus == AppointmentStatus.Confirmed || newStatus == AppointmentStatus.Rejected)); // Added Confirmed and Rejected
 
             if (!isAuthorized) return false;
 
-            // Logic for freeing up slot on cancellation
-            if (newStatus == AppointmentStatus.CancelledByUser || newStatus == AppointmentStatus.CancelledByDoctor)
+            // Logic for freeing up slot on cancellation or rejection
+            if (newStatus == AppointmentStatus.CancelledByUser || 
+                newStatus == AppointmentStatus.CancelledByDoctor || 
+                newStatus == AppointmentStatus.Rejected) // Free slot on rejection too
             {
                 if (appointment.DoctorAvailabilitySlot != null)
                 {
@@ -345,6 +350,16 @@ namespace MentalHealthApis.Services
                     _context.DoctorAvailabilities.Update(appointment.DoctorAvailabilitySlot);
                 }
             }
+            // Ensure slot is booked if confirming
+            else if (newStatus == AppointmentStatus.Confirmed)
+            {
+                 if (appointment.DoctorAvailabilitySlot != null)
+                {
+                    appointment.DoctorAvailabilitySlot.IsBooked = true;
+                    _context.DoctorAvailabilities.Update(appointment.DoctorAvailabilitySlot);
+                }
+            }
+
 
             appointment.Status = newStatus;
             appointment.UpdatedAt = DateTime.UtcNow;
@@ -353,16 +368,61 @@ namespace MentalHealthApis.Services
             {
                 appointment.DoctorNotes = notes;
             }
-            else if ((newStatus == AppointmentStatus.CancelledByUser || newStatus == AppointmentStatus.CancelledByDoctor) && !string.IsNullOrWhiteSpace(notes))
+            else if ((newStatus == AppointmentStatus.CancelledByUser || newStatus == AppointmentStatus.CancelledByDoctor || newStatus == AppointmentStatus.Rejected) && !string.IsNullOrWhiteSpace(notes))
             {
                 // Could have a generic "CancellationReason" field or use UserNotes/DoctorNotes
                 if (currentUserRole == UserRole.User) appointment.UserNotes = $"Cancellation: {notes}";
-                else appointment.DoctorNotes = $"Cancellation: {notes}";
+                else appointment.DoctorNotes = notes; // Doctor's reason for cancellation/rejection
             }
+            else if (newStatus == AppointmentStatus.Confirmed && currentUserRole == UserRole.Doctor && !string.IsNullOrWhiteSpace(notes))
+            {
+                 appointment.DoctorNotes = notes; // Doctor's optional notes on acceptance
+            }
+
 
             _context.Appointments.Update(appointment);
             await _context.SaveChangesAsync();
             return true;
+        }
+
+        // New method: Doctor accepts a pending appointment
+        public async Task<bool> AcceptAppointmentAsync(int appointmentId, int currentUserId, UserRole currentUserRole)
+        {
+            var appointment = await _context.Appointments
+                                    .Include(a => a.Doctor)
+                                    .FirstOrDefaultAsync(a => a.Id == appointmentId);
+
+            if (appointment == null || appointment.Status != AppointmentStatus.Pending) return false;
+
+            // Authorization: Only the assigned doctor or an admin can accept
+            if (currentUserRole != UserRole.Admin &&
+                !(currentUserRole == UserRole.Doctor && appointment.Doctor != null && appointment.Doctor.UserId == currentUserId))
+            {
+                return false; // Unauthorized
+            }
+
+            // Use the existing UpdateAppointmentStatusAsync for consistency
+            return await UpdateAppointmentStatusAsync(appointmentId, AppointmentStatus.Confirmed, "Appointment accepted by doctor.", currentUserId, currentUserRole);
+        }
+
+        // New method: Doctor rejects a pending appointment
+        public async Task<bool> RejectAppointmentAsync(int appointmentId, string doctorNotes, int currentUserId, UserRole currentUserRole)
+        {
+            var appointment = await _context.Appointments
+                                    .Include(a => a.Doctor)
+                                    .FirstOrDefaultAsync(a => a.Id == appointmentId);
+
+            if (appointment == null || appointment.Status != AppointmentStatus.Pending) return false;
+
+            // Authorization: Only the assigned doctor or an admin can reject
+            if (currentUserRole != UserRole.Admin &&
+                !(currentUserRole == UserRole.Doctor && appointment.Doctor != null && appointment.Doctor.UserId == currentUserId))
+            {
+                return false; // Unauthorized
+            }
+
+            // Use the existing UpdateAppointmentStatusAsync for consistency
+            return await UpdateAppointmentStatusAsync(appointmentId, AppointmentStatus.Rejected, doctorNotes, currentUserId, currentUserRole);
         }
     }
 }

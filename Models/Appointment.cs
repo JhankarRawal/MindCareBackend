@@ -25,10 +25,10 @@ namespace MentalHealthApis.Models
         [Required]
         public AppointmentStatus Status { get; set; } = AppointmentStatus.Pending;
 
-        [MaxLength(500)]
+        [MaxLength(2000)]
         public string? UserNotes { get; set; } // Notes from user when booking
 
-        [MaxLength(500)]
+        [MaxLength(2000)]
         public string? DoctorNotes { get; set; } // Notes from doctor after session
 
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;

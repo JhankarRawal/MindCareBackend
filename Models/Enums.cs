@@ -1,13 +1,14 @@
 ﻿namespace MentalHealthApis.Models
 {
-    public enum AppointmentStatus
+   public enum AppointmentStatus
     {
         Pending,
-        Confirmed, // Added for clarity, doctor might confirm
+        Confirmed,
         Completed,
-        CancelledByAdmin,
-        CancelledByUser,
-        CancelledByDoctor, // Or just "Cancelled" and track who did it
+        CancelledByAdmin, // An admin initiated cancellation
+        CancelledByUser,  // User initiated cancellation
+        CancelledByDoctor, // Doctor initiated cancellation
+        Rejected,         // Doctor explicitly declined a pending appointment
         Rescheduled
     }
 

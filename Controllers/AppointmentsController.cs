@@ -15,11 +15,13 @@ namespace MentalHealthApis.Controllers
     {
         private readonly IAppointmentService _appointmentService;
         private readonly IHttpContextAccessor _httpContextAccessor; // To get current user
+        private readonly IDoctorService _doctorService; // Inject DoctorService for mapping User to Doctor ID
 
-        public AppointmentsController(IAppointmentService appointmentService, IHttpContextAccessor httpContextAccessor)
+        public AppointmentsController(IAppointmentService appointmentService, IHttpContextAccessor httpContextAccessor, IDoctorService doctorService)
         {
             _appointmentService = appointmentService;
             _httpContextAccessor = httpContextAccessor;
+            _doctorService = doctorService; // Initialize DoctorService
         }
 
         private int GetCurrentUserId()
@@ -48,18 +50,15 @@ namespace MentalHealthApis.Controllers
         public async Task<ActionResult<AppointmentDto>> BookAppointment(CreateAppointmentDto createDto)
         {
             var currentUserId = GetCurrentUserId();
-            if (createDto.UserId != currentUserId)
-            {
-                // User can only book for themselves using this endpoint.
-                // Admins might use a different endpoint or have special logic.
-                return Forbid("You can only book appointments for yourself.");
-            }
+            // Removed createDto.UserId check here as the service layer implicitly uses currentUserId
+            // If you want to allow a user to book for someone else (e.g., admin), this endpoint needs modification
+            // For now, it's assumed current user is booking for themselves.
 
             var appointment = await _appointmentService.CreateAppointmentAsync(createDto, currentUserId);
             if (appointment == null)
             {
                 // Service layer should ideally return more specific errors
-                return BadRequest("Could not create appointment. Slot may be unavailable, doctor not found, or user has existing pending appointment.");
+                return BadRequest("Could not create appointment. Slot may be unavailable, doctor not found, or user has existing pending/confirmed appointment.");
             }
             return CreatedAtAction(nameof(GetAppointmentById), new { id = appointment.Id }, appointment);
         }
@@ -74,10 +73,17 @@ namespace MentalHealthApis.Controllers
             var currentUserId = GetCurrentUserId();
             var currentUserRole = GetCurrentUserRole();
 
+            // Get the Doctor ID for the current user if they are a Doctor
+            int? currentDoctorId = null;
+            if (currentUserRole == UserRole.Doctor)
+            {
+                currentDoctorId = await _doctorService.GetDoctorProfileIdByUserIdAsync(currentUserId);
+            }
+
             // Authorization: User can see their own, Doctor their own, Admin anyone's
             if (currentUserRole == UserRole.Admin ||
                 (currentUserRole == UserRole.User && appointment.UserId == currentUserId) ||
-                (currentUserRole == UserRole.Doctor && appointment.DoctorId == (await GetDoctorIdForCurrentUserAsync(currentUserId)))) // Assuming doctor role maps to a doctor entity
+                (currentUserRole == UserRole.Doctor && appointment.DoctorId == currentDoctorId))
             {
                 return Ok(appointment);
             }
@@ -100,8 +106,8 @@ namespace MentalHealthApis.Controllers
         public async Task<ActionResult<IEnumerable<AppointmentDto>>> GetDoctorAppointments()
         {
             var doctorUserId = GetCurrentUserId();
-            // Need to map doctorUserId (from User table) to DoctorId (from Doctor table)
-            var doctorId = await GetDoctorIdForCurrentUserAsync(doctorUserId);
+            // Use the DoctorService to get the DoctorId
+            var doctorId = await _doctorService.GetDoctorProfileIdByUserIdAsync(doctorUserId);
             if (!doctorId.HasValue) return NotFound("Doctor profile not found for current user.");
 
             var appointments = await _appointmentService.GetDoctorAppointmentsAsync(doctorId.Value);
@@ -109,15 +115,11 @@ namespace MentalHealthApis.Controllers
         }
 
         // Helper to get DoctorId from current logged-in User (if they are a doctor)
-        // This would ideally be in a DoctorService or cached
-        private async Task<int?> GetDoctorIdForCurrentUserAsync(int userId)
-        {
-            // Assuming IAppointmentService has access to DbContext or there's a dedicated DoctorService
-            // This is a simplification; you might have a more direct way if DoctorService exists.
-            var doctor = await ((AppointmentService)_appointmentService) // Casting for direct context access, not ideal
-                               ._context.Doctors.FirstOrDefaultAsync(d => d.UserId == userId);
-            return doctor?.Id;
-        }
+        // This helper is now simpler as it uses the injected IDoctorService
+        // private async Task<int?> GetDoctorIdForCurrentUserAsync(int userId)
+        // {
+        //     return await _doctorService.GetDoctorProfileIdByUserIdAsync(userId);
+        // }
 
 
         // PUT: api/appointments/{id}/reschedule (User reschedules their appointment)
@@ -179,5 +181,37 @@ namespace MentalHealthApis.Controllers
             if (!success) return BadRequest("Failed to complete. Appointment not found or unauthorized.");
             return NoContent();
         }
+
+        // New: PUT: api/appointments/{id}/accept (Doctor accepts a pending appointment)
+        [HttpPut("{id}/accept")]
+        [Authorize(Roles = "Doctor,Admin")]
+        public async Task<IActionResult> AcceptAppointment(int id)
+        {
+            var currentUserId = GetCurrentUserId();
+            var currentUserRole = GetCurrentUserRole();
+
+            var success = await _appointmentService.AcceptAppointmentAsync(id, currentUserId, currentUserRole);
+            if (!success) return BadRequest("Failed to accept appointment. Appointment not found, not pending, or unauthorized.");
+            return NoContent();
+        }
+
+        // New: PUT: api/appointments/{id}/reject (Doctor rejects a pending appointment)
+        [HttpPut("{id}/reject")]
+        [Authorize(Roles = "Doctor,Admin")]
+        public async Task<IActionResult> RejectAppointment(int id, [FromBody] RejectAppointmentDto rejectDto) // DTO to capture doctor's notes
+        {
+            var currentUserId = GetCurrentUserId();
+            var currentUserRole = GetCurrentUserRole();
+
+            var success = await _appointmentService.RejectAppointmentAsync(id, rejectDto.DoctorNotes, currentUserId, currentUserRole);
+            if (!success) return BadRequest("Failed to reject appointment. Appointment not found, not pending, or unauthorized.");
+            return NoContent();
+        }
+    }
+
+    // New DTO for RejectAppointment to get Doctor's notes
+    public class RejectAppointmentDto
+    {
+        public string DoctorNotes { get; set; } = string.Empty;
     }
 }
