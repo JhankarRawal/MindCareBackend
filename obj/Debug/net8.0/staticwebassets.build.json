@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "WYJ5+0Q218XnL1DTrVWCrGt8Pq24j5Mt37EcpHDx7Bg=",
+  "Hash": "ExeilagJmLLbt77V5fouVTOulEH5amEpYQxIa71DTrs=",
   "Source": "MentalHealthApis",
   "BasePath": "_content/MentalHealthApis",
   "Mode": "Default",
@@ -8,678 +8,1869 @@
   "ReferencedProjectsConfiguration": [],
   "DiscoveryPatterns": [
     {
-      "Name": "MentalHealthApis/wwwroot",
+      "Name": "MentalHealthApis\\wwwroot",
       "Source": "MentalHealthApis",
-      "ContentRoot": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/",
+      "ContentRoot": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\",
       "BasePath": "_content/MentalHealthApis",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/documents/doctors/1003/Certificate_a17a129c-2c85-4523-9202-5f74f21e4eb5.png",
+      "Identity": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\documents\\doctors\\1\\Certificate_9e520d76-6383-408f-b057-40a7d678676a.jpg",
       "SourceId": "MentalHealthApis",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/",
+      "ContentRoot": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\",
       "BasePath": "_content/MentalHealthApis",
-      "RelativePath": "documents/doctors/1003/Certificate_a17a129c-2c85-4523-9202-5f74f21e4eb5.png",
+      "RelativePath": "documents/doctors/1/Certificate_9e520d76-6383-408f-b057-40a7d678676a#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "fnvuqp2qdb",
+      "Integrity": "u/kjLPmQ/bE8BDIhNjxxt8iqSOUobJoa9pHq/8w0V90=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/documents/doctors/1003/Certificate_a17a129c-2c85-4523-9202-5f74f21e4eb5.png"
+      "OriginalItemSpec": "wwwroot\\documents\\doctors\\1\\Certificate_9e520d76-6383-408f-b057-40a7d678676a.jpg"
     },
     {
-      "Identity": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/documents/doctors/1003/CitizenshipBack_a4b1c714-e4ae-4389-8998-a824e9484939.png",
+      "Identity": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\documents\\doctors\\1\\CitizenshipBack_7ec13f54-eb73-4cbb-80df-35be1afc7e18.png",
       "SourceId": "MentalHealthApis",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/",
+      "ContentRoot": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\",
       "BasePath": "_content/MentalHealthApis",
-      "RelativePath": "documents/doctors/1003/CitizenshipBack_a4b1c714-e4ae-4389-8998-a824e9484939.png",
+      "RelativePath": "documents/doctors/1/CitizenshipBack_7ec13f54-eb73-4cbb-80df-35be1afc7e18#[.{fingerprint}]?.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "y99rwnsixi",
+      "Integrity": "toO70yJ0XsA5NS8O8+TBzu+4ZV2VY7dQ8/OUGPvzB1I=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/documents/doctors/1003/CitizenshipBack_a4b1c714-e4ae-4389-8998-a824e9484939.png"
+      "OriginalItemSpec": "wwwroot\\documents\\doctors\\1\\CitizenshipBack_7ec13f54-eb73-4cbb-80df-35be1afc7e18.png"
     },
     {
-      "Identity": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/documents/doctors/1003/CitizenshipFront_979044ea-01ce-4a9a-9916-ed7ce0da3296.png",
+      "Identity": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\documents\\doctors\\1\\CitizenshipFront_18307c20-4545-40ea-a6dd-48c5c3f48369.png",
       "SourceId": "MentalHealthApis",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/",
+      "ContentRoot": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\",
       "BasePath": "_content/MentalHealthApis",
-      "RelativePath": "documents/doctors/1003/CitizenshipFront_979044ea-01ce-4a9a-9916-ed7ce0da3296.png",
+      "RelativePath": "documents/doctors/1/CitizenshipFront_18307c20-4545-40ea-a6dd-48c5c3f48369#[.{fingerprint}]?.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "y99rwnsixi",
+      "Integrity": "toO70yJ0XsA5NS8O8+TBzu+4ZV2VY7dQ8/OUGPvzB1I=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/documents/doctors/1003/CitizenshipFront_979044ea-01ce-4a9a-9916-ed7ce0da3296.png"
+      "OriginalItemSpec": "wwwroot\\documents\\doctors\\1\\CitizenshipFront_18307c20-4545-40ea-a6dd-48c5c3f48369.png"
     },
     {
-      "Identity": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/documents/doctors/1003/PasswordSizedPhoto_a142d6da-69ec-4dad-9f24-d96c05f5cad4.png",
+      "Identity": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\documents\\doctors\\1\\PasswordSizedPhoto_23277c66-a89f-41be-bb55-dcbafe80566c.png",
       "SourceId": "MentalHealthApis",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/",
+      "ContentRoot": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\",
       "BasePath": "_content/MentalHealthApis",
-      "RelativePath": "documents/doctors/1003/PasswordSizedPhoto_a142d6da-69ec-4dad-9f24-d96c05f5cad4.png",
+      "RelativePath": "documents/doctors/1/PasswordSizedPhoto_23277c66-a89f-41be-bb55-dcbafe80566c#[.{fingerprint}]?.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "y99rwnsixi",
+      "Integrity": "toO70yJ0XsA5NS8O8+TBzu+4ZV2VY7dQ8/OUGPvzB1I=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/documents/doctors/1003/PasswordSizedPhoto_a142d6da-69ec-4dad-9f24-d96c05f5cad4.png"
+      "OriginalItemSpec": "wwwroot\\documents\\doctors\\1\\PasswordSizedPhoto_23277c66-a89f-41be-bb55-dcbafe80566c.png"
     },
     {
-      "Identity": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/documents/doctors/2/Certificate_84e287f2-66ac-4298-892b-1d724bc0d90e.png",
+      "Identity": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\uploads\\blog\\0c7e2e4e-ff3a-4b68-a3c0-42badcb94c3c_viber_image_2025-05-22_09-23-34-591.jpg",
       "SourceId": "MentalHealthApis",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/",
+      "ContentRoot": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\",
       "BasePath": "_content/MentalHealthApis",
-      "RelativePath": "documents/doctors/2/Certificate_84e287f2-66ac-4298-892b-1d724bc0d90e.png",
+      "RelativePath": "uploads/blog/0c7e2e4e-ff3a-4b68-a3c0-42badcb94c3c_viber_image_2025-05-22_09-23-34-591#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "n7hw659qeg",
+      "Integrity": "3dZRnds2PxOxYww9vpymLyY69oPo/0Y75cfe/INC5uk=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/documents/doctors/2/Certificate_84e287f2-66ac-4298-892b-1d724bc0d90e.png"
+      "OriginalItemSpec": "wwwroot\\uploads\\blog\\0c7e2e4e-ff3a-4b68-a3c0-42badcb94c3c_viber_image_2025-05-22_09-23-34-591.jpg"
     },
     {
-      "Identity": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/documents/doctors/2/Certificate_cf612996-9e9b-4242-bafe-dc34eb9ba4e7.png",
+      "Identity": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\uploads\\blog\\1ff5ceeb-a106-49f1-a105-2f5e6940554f_ComponentDiagram.png",
       "SourceId": "MentalHealthApis",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/",
+      "ContentRoot": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\",
       "BasePath": "_content/MentalHealthApis",
-      "RelativePath": "documents/doctors/2/Certificate_cf612996-9e9b-4242-bafe-dc34eb9ba4e7.png",
+      "RelativePath": "uploads/blog/1ff5ceeb-a106-49f1-a105-2f5e6940554f_ComponentDiagram#[.{fingerprint}]?.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "uhs49d15sz",
+      "Integrity": "vkktzntLzdrMq+cmkKW4PPpz6gVizd7OjOhe24QHlHs=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/documents/doctors/2/Certificate_cf612996-9e9b-4242-bafe-dc34eb9ba4e7.png"
+      "OriginalItemSpec": "wwwroot\\uploads\\blog\\1ff5ceeb-a106-49f1-a105-2f5e6940554f_ComponentDiagram.png"
     },
     {
-      "Identity": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/documents/doctors/2/Certificate_ed597216-6c9a-4e9e-ba9b-a0aa582f431e.png",
+      "Identity": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\uploads\\blog\\5d09ab1a-837c-4548-8171-a16e01fdd0a2_Picture1.png",
       "SourceId": "MentalHealthApis",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/",
+      "ContentRoot": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\",
       "BasePath": "_content/MentalHealthApis",
-      "RelativePath": "documents/doctors/2/Certificate_ed597216-6c9a-4e9e-ba9b-a0aa582f431e.png",
+      "RelativePath": "uploads/blog/5d09ab1a-837c-4548-8171-a16e01fdd0a2_Picture1#[.{fingerprint}]?.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "y99rwnsixi",
+      "Integrity": "toO70yJ0XsA5NS8O8+TBzu+4ZV2VY7dQ8/OUGPvzB1I=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/documents/doctors/2/Certificate_ed597216-6c9a-4e9e-ba9b-a0aa582f431e.png"
+      "OriginalItemSpec": "wwwroot\\uploads\\blog\\5d09ab1a-837c-4548-8171-a16e01fdd0a2_Picture1.png"
     },
     {
-      "Identity": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/documents/doctors/2/CitizenshipBack_648ff42e-f2b7-4724-ad3b-a61928b6fe10.png",
+      "Identity": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\uploads\\blog\\64e7bc9c-6316-4251-8cb9-a350710be5a1_viber_image_2025-05-22_09-23-34-591.jpg",
       "SourceId": "MentalHealthApis",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/",
+      "ContentRoot": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\",
       "BasePath": "_content/MentalHealthApis",
-      "RelativePath": "documents/doctors/2/CitizenshipBack_648ff42e-f2b7-4724-ad3b-a61928b6fe10.png",
+      "RelativePath": "uploads/blog/64e7bc9c-6316-4251-8cb9-a350710be5a1_viber_image_2025-05-22_09-23-34-591#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "n7hw659qeg",
+      "Integrity": "3dZRnds2PxOxYww9vpymLyY69oPo/0Y75cfe/INC5uk=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/documents/doctors/2/CitizenshipBack_648ff42e-f2b7-4724-ad3b-a61928b6fe10.png"
+      "OriginalItemSpec": "wwwroot\\uploads\\blog\\64e7bc9c-6316-4251-8cb9-a350710be5a1_viber_image_2025-05-22_09-23-34-591.jpg"
     },
     {
-      "Identity": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/documents/doctors/2/CitizenshipBack_68a3a6fc-21de-45f1-9e55-627f4f1d993c.png",
+      "Identity": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\uploads\\blog\\950aeb2e-b9fd-4891-b01e-f52aae9a561a_viber_image_2025-05-22_09-23-34-591.jpg",
       "SourceId": "MentalHealthApis",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/",
+      "ContentRoot": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\",
       "BasePath": "_content/MentalHealthApis",
-      "RelativePath": "documents/doctors/2/CitizenshipBack_68a3a6fc-21de-45f1-9e55-627f4f1d993c.png",
+      "RelativePath": "uploads/blog/950aeb2e-b9fd-4891-b01e-f52aae9a561a_viber_image_2025-05-22_09-23-34-591#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "n7hw659qeg",
+      "Integrity": "3dZRnds2PxOxYww9vpymLyY69oPo/0Y75cfe/INC5uk=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/documents/doctors/2/CitizenshipBack_68a3a6fc-21de-45f1-9e55-627f4f1d993c.png"
+      "OriginalItemSpec": "wwwroot\\uploads\\blog\\950aeb2e-b9fd-4891-b01e-f52aae9a561a_viber_image_2025-05-22_09-23-34-591.jpg"
     },
     {
-      "Identity": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/documents/doctors/2/CitizenshipBack_e0a456ea-cca6-41b2-8951-1ce21738291b.png",
+      "Identity": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\uploads\\blog\\9a26ae35-1af6-46cf-9236-5ea6ed8318d1_viber_image_2025-05-22_09-23-34-591.jpg",
       "SourceId": "MentalHealthApis",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/",
+      "ContentRoot": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\",
       "BasePath": "_content/MentalHealthApis",
-      "RelativePath": "documents/doctors/2/CitizenshipBack_e0a456ea-cca6-41b2-8951-1ce21738291b.png",
+      "RelativePath": "uploads/blog/9a26ae35-1af6-46cf-9236-5ea6ed8318d1_viber_image_2025-05-22_09-23-34-591#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "n7hw659qeg",
+      "Integrity": "3dZRnds2PxOxYww9vpymLyY69oPo/0Y75cfe/INC5uk=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/documents/doctors/2/CitizenshipBack_e0a456ea-cca6-41b2-8951-1ce21738291b.png"
+      "OriginalItemSpec": "wwwroot\\uploads\\blog\\9a26ae35-1af6-46cf-9236-5ea6ed8318d1_viber_image_2025-05-22_09-23-34-591.jpg"
     },
     {
-      "Identity": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/documents/doctors/2/CitizenshipFront_19d25a3a-6ff7-4330-b11f-ff1d5d7acb20.png",
+      "Identity": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\uploads\\blog\\b1d0add2-5553-46d3-a463-22edf891880c_ClassDiagramofdatabase.drawio.png",
       "SourceId": "MentalHealthApis",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/",
+      "ContentRoot": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\",
       "BasePath": "_content/MentalHealthApis",
-      "RelativePath": "documents/doctors/2/CitizenshipFront_19d25a3a-6ff7-4330-b11f-ff1d5d7acb20.png",
+      "RelativePath": "uploads/blog/b1d0add2-5553-46d3-a463-22edf891880c_ClassDiagramofdatabase.drawio#[.{fingerprint}]?.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "kcce057exr",
+      "Integrity": "BFqdG/S4P30drpiyV2Ar4UXQHm+PU9uXf5B0gX74iBg=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/documents/doctors/2/CitizenshipFront_19d25a3a-6ff7-4330-b11f-ff1d5d7acb20.png"
+      "OriginalItemSpec": "wwwroot\\uploads\\blog\\b1d0add2-5553-46d3-a463-22edf891880c_ClassDiagramofdatabase.drawio.png"
     },
     {
-      "Identity": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/documents/doctors/2/CitizenshipFront_a15651ae-6e37-404c-99a6-423ceab8f4be.png",
+      "Identity": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\uploads\\blog\\f99cb7fd-325d-4a90-9a96-1a57654fa784_ComponentDiagram.png",
       "SourceId": "MentalHealthApis",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/",
+      "ContentRoot": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\",
       "BasePath": "_content/MentalHealthApis",
-      "RelativePath": "documents/doctors/2/CitizenshipFront_a15651ae-6e37-404c-99a6-423ceab8f4be.png",
+      "RelativePath": "uploads/blog/f99cb7fd-325d-4a90-9a96-1a57654fa784_ComponentDiagram#[.{fingerprint}]?.png",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "uhs49d15sz",
+      "Integrity": "vkktzntLzdrMq+cmkKW4PPpz6gVizd7OjOhe24QHlHs=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/documents/doctors/2/CitizenshipFront_a15651ae-6e37-404c-99a6-423ceab8f4be.png"
+      "OriginalItemSpec": "wwwroot\\uploads\\blog\\f99cb7fd-325d-4a90-9a96-1a57654fa784_ComponentDiagram.png"
     },
     {
-      "Identity": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/documents/doctors/2/CitizenshipFront_eea13bc2-97e8-4cac-8015-38c1ccc9889f.png",
+      "Identity": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\uploads\\doctors\\2\\2189d79a-f569-491a-b8d5-696b2310be00_viber_image_2025-05-22_09-23-34-591.jpg",
       "SourceId": "MentalHealthApis",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/",
+      "ContentRoot": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\",
       "BasePath": "_content/MentalHealthApis",
-      "RelativePath": "documents/doctors/2/CitizenshipFront_eea13bc2-97e8-4cac-8015-38c1ccc9889f.png",
+      "RelativePath": "uploads/doctors/2/2189d79a-f569-491a-b8d5-696b2310be00_viber_image_2025-05-22_09-23-34-591#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "n7hw659qeg",
+      "Integrity": "3dZRnds2PxOxYww9vpymLyY69oPo/0Y75cfe/INC5uk=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/documents/doctors/2/CitizenshipFront_eea13bc2-97e8-4cac-8015-38c1ccc9889f.png"
+      "OriginalItemSpec": "wwwroot\\uploads\\doctors\\2\\2189d79a-f569-491a-b8d5-696b2310be00_viber_image_2025-05-22_09-23-34-591.jpg"
     },
     {
-      "Identity": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/documents/doctors/2/PasswordSizedPhoto_1677a96c-bce3-444d-ba4d-aab79c7538e0.png",
+      "Identity": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\uploads\\doctors\\2\\226fc554-464e-4282-9df3-fc1a7c1b3337_viber_image_2025-05-22_09-23-34-591.jpg",
       "SourceId": "MentalHealthApis",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/",
+      "ContentRoot": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\",
       "BasePath": "_content/MentalHealthApis",
-      "RelativePath": "documents/doctors/2/PasswordSizedPhoto_1677a96c-bce3-444d-ba4d-aab79c7538e0.png",
+      "RelativePath": "uploads/doctors/2/226fc554-464e-4282-9df3-fc1a7c1b3337_viber_image_2025-05-22_09-23-34-591#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "n7hw659qeg",
+      "Integrity": "3dZRnds2PxOxYww9vpymLyY69oPo/0Y75cfe/INC5uk=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/documents/doctors/2/PasswordSizedPhoto_1677a96c-bce3-444d-ba4d-aab79c7538e0.png"
+      "OriginalItemSpec": "wwwroot\\uploads\\doctors\\2\\226fc554-464e-4282-9df3-fc1a7c1b3337_viber_image_2025-05-22_09-23-34-591.jpg"
     },
     {
-      "Identity": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/documents/doctors/2/PasswordSizedPhoto_7036aa04-fa16-4784-97e4-9b1c3a327b7e.png",
+      "Identity": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\uploads\\doctors\\2\\63ea677d-fc9b-4319-9947-1c2ea4863d9c_viber_image_2025-05-22_09-23-34-591.jpg",
       "SourceId": "MentalHealthApis",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/",
+      "ContentRoot": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\",
       "BasePath": "_content/MentalHealthApis",
-      "RelativePath": "documents/doctors/2/PasswordSizedPhoto_7036aa04-fa16-4784-97e4-9b1c3a327b7e.png",
+      "RelativePath": "uploads/doctors/2/63ea677d-fc9b-4319-9947-1c2ea4863d9c_viber_image_2025-05-22_09-23-34-591#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "n7hw659qeg",
+      "Integrity": "3dZRnds2PxOxYww9vpymLyY69oPo/0Y75cfe/INC5uk=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/documents/doctors/2/PasswordSizedPhoto_7036aa04-fa16-4784-97e4-9b1c3a327b7e.png"
+      "OriginalItemSpec": "wwwroot\\uploads\\doctors\\2\\63ea677d-fc9b-4319-9947-1c2ea4863d9c_viber_image_2025-05-22_09-23-34-591.jpg"
     },
     {
-      "Identity": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/documents/doctors/2/PasswordSizedPhoto_d82614d1-aff0-4ee5-901a-c2e3cef497a0.png",
+      "Identity": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\uploads\\doctors\\2\\a5147aff-db02-4221-9fe9-387d82d890b5_viber_image_2025-05-22_09-23-34-591.jpg",
       "SourceId": "MentalHealthApis",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/",
+      "ContentRoot": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\",
       "BasePath": "_content/MentalHealthApis",
-      "RelativePath": "documents/doctors/2/PasswordSizedPhoto_d82614d1-aff0-4ee5-901a-c2e3cef497a0.png",
+      "RelativePath": "uploads/doctors/2/a5147aff-db02-4221-9fe9-387d82d890b5_viber_image_2025-05-22_09-23-34-591#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "n7hw659qeg",
+      "Integrity": "3dZRnds2PxOxYww9vpymLyY69oPo/0Y75cfe/INC5uk=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/documents/doctors/2/PasswordSizedPhoto_d82614d1-aff0-4ee5-901a-c2e3cef497a0.png"
+      "OriginalItemSpec": "wwwroot\\uploads\\doctors\\2\\a5147aff-db02-4221-9fe9-387d82d890b5_viber_image_2025-05-22_09-23-34-591.jpg"
     },
     {
-      "Identity": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/documents/doctors/3/Certificate_13357bde-1b53-44f9-90ce-6e571b57f403.jpg",
+      "Identity": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\uploads\\doctors\\2\\aeee5533-1de1-4a44-b638-1f5ec590f8ff_viber_image_2025-05-22_09-23-34-591.jpg",
       "SourceId": "MentalHealthApis",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/",
+      "ContentRoot": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\",
       "BasePath": "_content/MentalHealthApis",
-      "RelativePath": "documents/doctors/3/Certificate_13357bde-1b53-44f9-90ce-6e571b57f403.jpg",
+      "RelativePath": "uploads/doctors/2/aeee5533-1de1-4a44-b638-1f5ec590f8ff_viber_image_2025-05-22_09-23-34-591#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "n7hw659qeg",
+      "Integrity": "3dZRnds2PxOxYww9vpymLyY69oPo/0Y75cfe/INC5uk=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/documents/doctors/3/Certificate_13357bde-1b53-44f9-90ce-6e571b57f403.jpg"
+      "OriginalItemSpec": "wwwroot\\uploads\\doctors\\2\\aeee5533-1de1-4a44-b638-1f5ec590f8ff_viber_image_2025-05-22_09-23-34-591.jpg"
     },
     {
-      "Identity": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/documents/doctors/3/CitizenshipBack_36763b2f-fe1b-4dae-a8f7-efd1264f4cc9.jpg",
+      "Identity": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\uploads\\doctors\\2\\c5e08900-c827-4a00-be55-e9140faa6a68_viber_image_2025-05-22_09-23-34-591.jpg",
       "SourceId": "MentalHealthApis",
       "SourceType": "Discovered",
-      "ContentRoot": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/",
+      "ContentRoot": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\",
       "BasePath": "_content/MentalHealthApis",
-      "RelativePath": "documents/doctors/3/CitizenshipBack_36763b2f-fe1b-4dae-a8f7-efd1264f4cc9.jpg",
+      "RelativePath": "uploads/doctors/2/c5e08900-c827-4a00-be55-e9140faa6a68_viber_image_2025-05-22_09-23-34-591#[.{fingerprint}]?.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeBehavior": "",
       "AssetMergeSource": "",
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
+      "Fingerprint": "n7hw659qeg",
+      "Integrity": "3dZRnds2PxOxYww9vpymLyY69oPo/0Y75cfe/INC5uk=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/documents/doctors/3/CitizenshipBack_36763b2f-fe1b-4dae-a8f7-efd1264f4cc9.jpg"
+      "OriginalItemSpec": "wwwroot\\uploads\\doctors\\2\\c5e08900-c827-4a00-be55-e9140faa6a68_viber_image_2025-05-22_09-23-34-591.jpg"
+    }
+  ],
+  "Endpoints": [
+    {
+      "Route": "documents/doctors/1/Certificate_9e520d76-6383-408f-b057-40a7d678676a.fnvuqp2qdb.jpg",
+      "AssetFile": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\documents\\doctors\\1\\Certificate_9e520d76-6383-408f-b057-40a7d678676a.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "117704"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"u/kjLPmQ/bE8BDIhNjxxt8iqSOUobJoa9pHq/8w0V90=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 01 Nov 2025 13:44:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "fnvuqp2qdb"
+        },
+        {
+          "Name": "label",
+          "Value": "documents/doctors/1/Certificate_9e520d76-6383-408f-b057-40a7d678676a.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-u/kjLPmQ/bE8BDIhNjxxt8iqSOUobJoa9pHq/8w0V90="
+        }
+      ]
     },
     {
-      "Identity": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/documents/doctors/3/CitizenshipFront_57c77097-9fd3-44de-b37c-2d4d05bcc098.jpg",
-      "SourceId": "MentalHealthApis",
-      "SourceType": "Discovered",
-      "ContentRoot": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/",
-      "BasePath": "_content/MentalHealthApis",
-      "RelativePath": "documents/doctors/3/CitizenshipFront_57c77097-9fd3-44de-b37c-2d4d05bcc098.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/documents/doctors/3/CitizenshipFront_57c77097-9fd3-44de-b37c-2d4d05bcc098.jpg"
+      "Route": "documents/doctors/1/Certificate_9e520d76-6383-408f-b057-40a7d678676a.jpg",
+      "AssetFile": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\documents\\doctors\\1\\Certificate_9e520d76-6383-408f-b057-40a7d678676a.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "117704"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"u/kjLPmQ/bE8BDIhNjxxt8iqSOUobJoa9pHq/8w0V90=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 01 Nov 2025 13:44:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-u/kjLPmQ/bE8BDIhNjxxt8iqSOUobJoa9pHq/8w0V90="
+        }
+      ]
     },
     {
-      "Identity": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/documents/doctors/3/PasswordSizedPhoto_15dce2f8-5630-44a7-a75d-53cb4b4fd0f7.jpg",
-      "SourceId": "MentalHealthApis",
-      "SourceType": "Discovered",
-      "ContentRoot": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/",
-      "BasePath": "_content/MentalHealthApis",
-      "RelativePath": "documents/doctors/3/PasswordSizedPhoto_15dce2f8-5630-44a7-a75d-53cb4b4fd0f7.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/documents/doctors/3/PasswordSizedPhoto_15dce2f8-5630-44a7-a75d-53cb4b4fd0f7.jpg"
+      "Route": "documents/doctors/1/CitizenshipBack_7ec13f54-eb73-4cbb-80df-35be1afc7e18.png",
+      "AssetFile": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\documents\\doctors\\1\\CitizenshipBack_7ec13f54-eb73-4cbb-80df-35be1afc7e18.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "29393"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"toO70yJ0XsA5NS8O8+TBzu+4ZV2VY7dQ8/OUGPvzB1I=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 01 Nov 2025 13:44:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-toO70yJ0XsA5NS8O8+TBzu+4ZV2VY7dQ8/OUGPvzB1I="
+        }
+      ]
     },
     {
-      "Identity": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/documents/doctors/3003/Certificate_a100fec9-3301-4b10-a020-020553e52c5d.png",
-      "SourceId": "MentalHealthApis",
-      "SourceType": "Discovered",
-      "ContentRoot": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/",
-      "BasePath": "_content/MentalHealthApis",
-      "RelativePath": "documents/doctors/3003/Certificate_a100fec9-3301-4b10-a020-020553e52c5d.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/documents/doctors/3003/Certificate_a100fec9-3301-4b10-a020-020553e52c5d.png"
+      "Route": "documents/doctors/1/CitizenshipBack_7ec13f54-eb73-4cbb-80df-35be1afc7e18.y99rwnsixi.png",
+      "AssetFile": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\documents\\doctors\\1\\CitizenshipBack_7ec13f54-eb73-4cbb-80df-35be1afc7e18.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "29393"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"toO70yJ0XsA5NS8O8+TBzu+4ZV2VY7dQ8/OUGPvzB1I=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 01 Nov 2025 13:44:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "y99rwnsixi"
+        },
+        {
+          "Name": "label",
+          "Value": "documents/doctors/1/CitizenshipBack_7ec13f54-eb73-4cbb-80df-35be1afc7e18.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-toO70yJ0XsA5NS8O8+TBzu+4ZV2VY7dQ8/OUGPvzB1I="
+        }
+      ]
     },
     {
-      "Identity": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/documents/doctors/3003/CitizenshipBack_eda5cab1-4512-40cf-9ee4-eb05f4a082cf.png",
-      "SourceId": "MentalHealthApis",
-      "SourceType": "Discovered",
-      "ContentRoot": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/",
-      "BasePath": "_content/MentalHealthApis",
-      "RelativePath": "documents/doctors/3003/CitizenshipBack_eda5cab1-4512-40cf-9ee4-eb05f4a082cf.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/documents/doctors/3003/CitizenshipBack_eda5cab1-4512-40cf-9ee4-eb05f4a082cf.png"
+      "Route": "documents/doctors/1/CitizenshipFront_18307c20-4545-40ea-a6dd-48c5c3f48369.png",
+      "AssetFile": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\documents\\doctors\\1\\CitizenshipFront_18307c20-4545-40ea-a6dd-48c5c3f48369.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "29393"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"toO70yJ0XsA5NS8O8+TBzu+4ZV2VY7dQ8/OUGPvzB1I=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 01 Nov 2025 13:44:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-toO70yJ0XsA5NS8O8+TBzu+4ZV2VY7dQ8/OUGPvzB1I="
+        }
+      ]
     },
     {
-      "Identity": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/documents/doctors/3003/CitizenshipFront_3698fd13-45a9-452d-80d5-275b54ed4f01.png",
-      "SourceId": "MentalHealthApis",
-      "SourceType": "Discovered",
-      "ContentRoot": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/",
-      "BasePath": "_content/MentalHealthApis",
-      "RelativePath": "documents/doctors/3003/CitizenshipFront_3698fd13-45a9-452d-80d5-275b54ed4f01.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/documents/doctors/3003/CitizenshipFront_3698fd13-45a9-452d-80d5-275b54ed4f01.png"
+      "Route": "documents/doctors/1/CitizenshipFront_18307c20-4545-40ea-a6dd-48c5c3f48369.y99rwnsixi.png",
+      "AssetFile": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\documents\\doctors\\1\\CitizenshipFront_18307c20-4545-40ea-a6dd-48c5c3f48369.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "29393"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"toO70yJ0XsA5NS8O8+TBzu+4ZV2VY7dQ8/OUGPvzB1I=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 01 Nov 2025 13:44:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "y99rwnsixi"
+        },
+        {
+          "Name": "label",
+          "Value": "documents/doctors/1/CitizenshipFront_18307c20-4545-40ea-a6dd-48c5c3f48369.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-toO70yJ0XsA5NS8O8+TBzu+4ZV2VY7dQ8/OUGPvzB1I="
+        }
+      ]
     },
     {
-      "Identity": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/documents/doctors/3003/PasswordSizedPhoto_2eec4589-4f5f-4c80-adae-c14dc734d944.png",
-      "SourceId": "MentalHealthApis",
-      "SourceType": "Discovered",
-      "ContentRoot": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/",
-      "BasePath": "_content/MentalHealthApis",
-      "RelativePath": "documents/doctors/3003/PasswordSizedPhoto_2eec4589-4f5f-4c80-adae-c14dc734d944.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/documents/doctors/3003/PasswordSizedPhoto_2eec4589-4f5f-4c80-adae-c14dc734d944.png"
+      "Route": "documents/doctors/1/PasswordSizedPhoto_23277c66-a89f-41be-bb55-dcbafe80566c.png",
+      "AssetFile": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\documents\\doctors\\1\\PasswordSizedPhoto_23277c66-a89f-41be-bb55-dcbafe80566c.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "29393"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"toO70yJ0XsA5NS8O8+TBzu+4ZV2VY7dQ8/OUGPvzB1I=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 01 Nov 2025 13:44:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-toO70yJ0XsA5NS8O8+TBzu+4ZV2VY7dQ8/OUGPvzB1I="
+        }
+      ]
     },
     {
-      "Identity": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/uploads/blog/0c7e2e4e-ff3a-4b68-a3c0-42badcb94c3c_viber_image_2025-05-22_09-23-34-591.jpg",
-      "SourceId": "MentalHealthApis",
-      "SourceType": "Discovered",
-      "ContentRoot": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/",
-      "BasePath": "_content/MentalHealthApis",
-      "RelativePath": "uploads/blog/0c7e2e4e-ff3a-4b68-a3c0-42badcb94c3c_viber_image_2025-05-22_09-23-34-591.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/uploads/blog/0c7e2e4e-ff3a-4b68-a3c0-42badcb94c3c_viber_image_2025-05-22_09-23-34-591.jpg"
+      "Route": "documents/doctors/1/PasswordSizedPhoto_23277c66-a89f-41be-bb55-dcbafe80566c.y99rwnsixi.png",
+      "AssetFile": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\documents\\doctors\\1\\PasswordSizedPhoto_23277c66-a89f-41be-bb55-dcbafe80566c.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "29393"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"toO70yJ0XsA5NS8O8+TBzu+4ZV2VY7dQ8/OUGPvzB1I=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 01 Nov 2025 13:44:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "y99rwnsixi"
+        },
+        {
+          "Name": "label",
+          "Value": "documents/doctors/1/PasswordSizedPhoto_23277c66-a89f-41be-bb55-dcbafe80566c.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-toO70yJ0XsA5NS8O8+TBzu+4ZV2VY7dQ8/OUGPvzB1I="
+        }
+      ]
     },
     {
-      "Identity": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/uploads/blog/2acc85a7-1093-42e3-970f-befde786ac3b_viber_image_2025-05-22_09-23-34-591.jpg",
-      "SourceId": "MentalHealthApis",
-      "SourceType": "Discovered",
-      "ContentRoot": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/",
-      "BasePath": "_content/MentalHealthApis",
-      "RelativePath": "uploads/blog/2acc85a7-1093-42e3-970f-befde786ac3b_viber_image_2025-05-22_09-23-34-591.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/uploads/blog/2acc85a7-1093-42e3-970f-befde786ac3b_viber_image_2025-05-22_09-23-34-591.jpg"
+      "Route": "uploads/blog/0c7e2e4e-ff3a-4b68-a3c0-42badcb94c3c_viber_image_2025-05-22_09-23-34-591.jpg",
+      "AssetFile": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\uploads\\blog\\0c7e2e4e-ff3a-4b68-a3c0-42badcb94c3c_viber_image_2025-05-22_09-23-34-591.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "216751"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3dZRnds2PxOxYww9vpymLyY69oPo/0Y75cfe/INC5uk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 01 Nov 2025 13:24:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-3dZRnds2PxOxYww9vpymLyY69oPo/0Y75cfe/INC5uk="
+        }
+      ]
     },
     {
-      "Identity": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/uploads/blog/64e7bc9c-6316-4251-8cb9-a350710be5a1_viber_image_2025-05-22_09-23-34-591.jpg",
-      "SourceId": "MentalHealthApis",
-      "SourceType": "Discovered",
-      "ContentRoot": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/",
-      "BasePath": "_content/MentalHealthApis",
-      "RelativePath": "uploads/blog/64e7bc9c-6316-4251-8cb9-a350710be5a1_viber_image_2025-05-22_09-23-34-591.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/uploads/blog/64e7bc9c-6316-4251-8cb9-a350710be5a1_viber_image_2025-05-22_09-23-34-591.jpg"
+      "Route": "uploads/blog/0c7e2e4e-ff3a-4b68-a3c0-42badcb94c3c_viber_image_2025-05-22_09-23-34-591.n7hw659qeg.jpg",
+      "AssetFile": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\uploads\\blog\\0c7e2e4e-ff3a-4b68-a3c0-42badcb94c3c_viber_image_2025-05-22_09-23-34-591.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "216751"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3dZRnds2PxOxYww9vpymLyY69oPo/0Y75cfe/INC5uk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 01 Nov 2025 13:24:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "n7hw659qeg"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/blog/0c7e2e4e-ff3a-4b68-a3c0-42badcb94c3c_viber_image_2025-05-22_09-23-34-591.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-3dZRnds2PxOxYww9vpymLyY69oPo/0Y75cfe/INC5uk="
+        }
+      ]
     },
     {
-      "Identity": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/uploads/blog/950aeb2e-b9fd-4891-b01e-f52aae9a561a_viber_image_2025-05-22_09-23-34-591.jpg",
-      "SourceId": "MentalHealthApis",
-      "SourceType": "Discovered",
-      "ContentRoot": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/",
-      "BasePath": "_content/MentalHealthApis",
-      "RelativePath": "uploads/blog/950aeb2e-b9fd-4891-b01e-f52aae9a561a_viber_image_2025-05-22_09-23-34-591.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/uploads/blog/950aeb2e-b9fd-4891-b01e-f52aae9a561a_viber_image_2025-05-22_09-23-34-591.jpg"
+      "Route": "uploads/blog/1ff5ceeb-a106-49f1-a105-2f5e6940554f_ComponentDiagram.png",
+      "AssetFile": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\uploads\\blog\\1ff5ceeb-a106-49f1-a105-2f5e6940554f_ComponentDiagram.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "21618"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"vkktzntLzdrMq+cmkKW4PPpz6gVizd7OjOhe24QHlHs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Nov 2025 02:54:57 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-vkktzntLzdrMq+cmkKW4PPpz6gVizd7OjOhe24QHlHs="
+        }
+      ]
     },
     {
-      "Identity": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/uploads/blog/9a26ae35-1af6-46cf-9236-5ea6ed8318d1_viber_image_2025-05-22_09-23-34-591.jpg",
-      "SourceId": "MentalHealthApis",
-      "SourceType": "Discovered",
-      "ContentRoot": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/",
-      "BasePath": "_content/MentalHealthApis",
-      "RelativePath": "uploads/blog/9a26ae35-1af6-46cf-9236-5ea6ed8318d1_viber_image_2025-05-22_09-23-34-591.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/uploads/blog/9a26ae35-1af6-46cf-9236-5ea6ed8318d1_viber_image_2025-05-22_09-23-34-591.jpg"
+      "Route": "uploads/blog/1ff5ceeb-a106-49f1-a105-2f5e6940554f_ComponentDiagram.uhs49d15sz.png",
+      "AssetFile": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\uploads\\blog\\1ff5ceeb-a106-49f1-a105-2f5e6940554f_ComponentDiagram.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "21618"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"vkktzntLzdrMq+cmkKW4PPpz6gVizd7OjOhe24QHlHs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Nov 2025 02:54:57 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "uhs49d15sz"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/blog/1ff5ceeb-a106-49f1-a105-2f5e6940554f_ComponentDiagram.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-vkktzntLzdrMq+cmkKW4PPpz6gVizd7OjOhe24QHlHs="
+        }
+      ]
     },
     {
-      "Identity": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/uploads/doctors/2/2189d79a-f569-491a-b8d5-696b2310be00_viber_image_2025-05-22_09-23-34-591.jpg",
-      "SourceId": "MentalHealthApis",
-      "SourceType": "Discovered",
-      "ContentRoot": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/",
-      "BasePath": "_content/MentalHealthApis",
-      "RelativePath": "uploads/doctors/2/2189d79a-f569-491a-b8d5-696b2310be00_viber_image_2025-05-22_09-23-34-591.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/uploads/doctors/2/2189d79a-f569-491a-b8d5-696b2310be00_viber_image_2025-05-22_09-23-34-591.jpg"
+      "Route": "uploads/blog/5d09ab1a-837c-4548-8171-a16e01fdd0a2_Picture1.png",
+      "AssetFile": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\uploads\\blog\\5d09ab1a-837c-4548-8171-a16e01fdd0a2_Picture1.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "29393"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"toO70yJ0XsA5NS8O8+TBzu+4ZV2VY7dQ8/OUGPvzB1I=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 03 Nov 2025 02:45:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-toO70yJ0XsA5NS8O8+TBzu+4ZV2VY7dQ8/OUGPvzB1I="
+        }
+      ]
     },
     {
-      "Identity": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/uploads/doctors/2/226fc554-464e-4282-9df3-fc1a7c1b3337_viber_image_2025-05-22_09-23-34-591.jpg",
-      "SourceId": "MentalHealthApis",
-      "SourceType": "Discovered",
-      "ContentRoot": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/",
-      "BasePath": "_content/MentalHealthApis",
-      "RelativePath": "uploads/doctors/2/226fc554-464e-4282-9df3-fc1a7c1b3337_viber_image_2025-05-22_09-23-34-591.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/uploads/doctors/2/226fc554-464e-4282-9df3-fc1a7c1b3337_viber_image_2025-05-22_09-23-34-591.jpg"
+      "Route": "uploads/blog/5d09ab1a-837c-4548-8171-a16e01fdd0a2_Picture1.y99rwnsixi.png",
+      "AssetFile": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\uploads\\blog\\5d09ab1a-837c-4548-8171-a16e01fdd0a2_Picture1.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "29393"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"toO70yJ0XsA5NS8O8+TBzu+4ZV2VY7dQ8/OUGPvzB1I=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 03 Nov 2025 02:45:01 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "y99rwnsixi"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/blog/5d09ab1a-837c-4548-8171-a16e01fdd0a2_Picture1.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-toO70yJ0XsA5NS8O8+TBzu+4ZV2VY7dQ8/OUGPvzB1I="
+        }
+      ]
     },
     {
-      "Identity": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/uploads/doctors/2/63ea677d-fc9b-4319-9947-1c2ea4863d9c_viber_image_2025-05-22_09-23-34-591.jpg",
-      "SourceId": "MentalHealthApis",
-      "SourceType": "Discovered",
-      "ContentRoot": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/",
-      "BasePath": "_content/MentalHealthApis",
-      "RelativePath": "uploads/doctors/2/63ea677d-fc9b-4319-9947-1c2ea4863d9c_viber_image_2025-05-22_09-23-34-591.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/uploads/doctors/2/63ea677d-fc9b-4319-9947-1c2ea4863d9c_viber_image_2025-05-22_09-23-34-591.jpg"
+      "Route": "uploads/blog/64e7bc9c-6316-4251-8cb9-a350710be5a1_viber_image_2025-05-22_09-23-34-591.jpg",
+      "AssetFile": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\uploads\\blog\\64e7bc9c-6316-4251-8cb9-a350710be5a1_viber_image_2025-05-22_09-23-34-591.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "216751"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3dZRnds2PxOxYww9vpymLyY69oPo/0Y75cfe/INC5uk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 01 Nov 2025 13:24:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-3dZRnds2PxOxYww9vpymLyY69oPo/0Y75cfe/INC5uk="
+        }
+      ]
     },
     {
-      "Identity": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/uploads/doctors/2/a5147aff-db02-4221-9fe9-387d82d890b5_viber_image_2025-05-22_09-23-34-591.jpg",
-      "SourceId": "MentalHealthApis",
-      "SourceType": "Discovered",
-      "ContentRoot": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/",
-      "BasePath": "_content/MentalHealthApis",
-      "RelativePath": "uploads/doctors/2/a5147aff-db02-4221-9fe9-387d82d890b5_viber_image_2025-05-22_09-23-34-591.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/uploads/doctors/2/a5147aff-db02-4221-9fe9-387d82d890b5_viber_image_2025-05-22_09-23-34-591.jpg"
+      "Route": "uploads/blog/64e7bc9c-6316-4251-8cb9-a350710be5a1_viber_image_2025-05-22_09-23-34-591.n7hw659qeg.jpg",
+      "AssetFile": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\uploads\\blog\\64e7bc9c-6316-4251-8cb9-a350710be5a1_viber_image_2025-05-22_09-23-34-591.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "216751"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3dZRnds2PxOxYww9vpymLyY69oPo/0Y75cfe/INC5uk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 01 Nov 2025 13:24:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "n7hw659qeg"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/blog/64e7bc9c-6316-4251-8cb9-a350710be5a1_viber_image_2025-05-22_09-23-34-591.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-3dZRnds2PxOxYww9vpymLyY69oPo/0Y75cfe/INC5uk="
+        }
+      ]
     },
     {
-      "Identity": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/uploads/doctors/2/aeee5533-1de1-4a44-b638-1f5ec590f8ff_viber_image_2025-05-22_09-23-34-591.jpg",
-      "SourceId": "MentalHealthApis",
-      "SourceType": "Discovered",
-      "ContentRoot": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/",
-      "BasePath": "_content/MentalHealthApis",
-      "RelativePath": "uploads/doctors/2/aeee5533-1de1-4a44-b638-1f5ec590f8ff_viber_image_2025-05-22_09-23-34-591.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/uploads/doctors/2/aeee5533-1de1-4a44-b638-1f5ec590f8ff_viber_image_2025-05-22_09-23-34-591.jpg"
+      "Route": "uploads/blog/950aeb2e-b9fd-4891-b01e-f52aae9a561a_viber_image_2025-05-22_09-23-34-591.jpg",
+      "AssetFile": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\uploads\\blog\\950aeb2e-b9fd-4891-b01e-f52aae9a561a_viber_image_2025-05-22_09-23-34-591.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "216751"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3dZRnds2PxOxYww9vpymLyY69oPo/0Y75cfe/INC5uk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 01 Nov 2025 13:24:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-3dZRnds2PxOxYww9vpymLyY69oPo/0Y75cfe/INC5uk="
+        }
+      ]
     },
     {
-      "Identity": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/uploads/doctors/2/c5e08900-c827-4a00-be55-e9140faa6a68_viber_image_2025-05-22_09-23-34-591.jpg",
-      "SourceId": "MentalHealthApis",
-      "SourceType": "Discovered",
-      "ContentRoot": "/home/satish-timalsina/Desktop/regression/ha/MindCareBackend/wwwroot/",
-      "BasePath": "_content/MentalHealthApis",
-      "RelativePath": "uploads/doctors/2/c5e08900-c827-4a00-be55-e9140faa6a68_viber_image_2025-05-22_09-23-34-591.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot/uploads/doctors/2/c5e08900-c827-4a00-be55-e9140faa6a68_viber_image_2025-05-22_09-23-34-591.jpg"
+      "Route": "uploads/blog/950aeb2e-b9fd-4891-b01e-f52aae9a561a_viber_image_2025-05-22_09-23-34-591.n7hw659qeg.jpg",
+      "AssetFile": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\uploads\\blog\\950aeb2e-b9fd-4891-b01e-f52aae9a561a_viber_image_2025-05-22_09-23-34-591.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "216751"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3dZRnds2PxOxYww9vpymLyY69oPo/0Y75cfe/INC5uk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 01 Nov 2025 13:24:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "n7hw659qeg"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/blog/950aeb2e-b9fd-4891-b01e-f52aae9a561a_viber_image_2025-05-22_09-23-34-591.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-3dZRnds2PxOxYww9vpymLyY69oPo/0Y75cfe/INC5uk="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/blog/9a26ae35-1af6-46cf-9236-5ea6ed8318d1_viber_image_2025-05-22_09-23-34-591.jpg",
+      "AssetFile": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\uploads\\blog\\9a26ae35-1af6-46cf-9236-5ea6ed8318d1_viber_image_2025-05-22_09-23-34-591.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "216751"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3dZRnds2PxOxYww9vpymLyY69oPo/0Y75cfe/INC5uk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 01 Nov 2025 13:24:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-3dZRnds2PxOxYww9vpymLyY69oPo/0Y75cfe/INC5uk="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/blog/9a26ae35-1af6-46cf-9236-5ea6ed8318d1_viber_image_2025-05-22_09-23-34-591.n7hw659qeg.jpg",
+      "AssetFile": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\uploads\\blog\\9a26ae35-1af6-46cf-9236-5ea6ed8318d1_viber_image_2025-05-22_09-23-34-591.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "216751"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3dZRnds2PxOxYww9vpymLyY69oPo/0Y75cfe/INC5uk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 01 Nov 2025 13:24:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "n7hw659qeg"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/blog/9a26ae35-1af6-46cf-9236-5ea6ed8318d1_viber_image_2025-05-22_09-23-34-591.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-3dZRnds2PxOxYww9vpymLyY69oPo/0Y75cfe/INC5uk="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/blog/b1d0add2-5553-46d3-a463-22edf891880c_ClassDiagramofdatabase.drawio.kcce057exr.png",
+      "AssetFile": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\uploads\\blog\\b1d0add2-5553-46d3-a463-22edf891880c_ClassDiagramofdatabase.drawio.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "148211"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"BFqdG/S4P30drpiyV2Ar4UXQHm+PU9uXf5B0gX74iBg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Nov 2025 03:12:33 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "kcce057exr"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/blog/b1d0add2-5553-46d3-a463-22edf891880c_ClassDiagramofdatabase.drawio.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-BFqdG/S4P30drpiyV2Ar4UXQHm+PU9uXf5B0gX74iBg="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/blog/b1d0add2-5553-46d3-a463-22edf891880c_ClassDiagramofdatabase.drawio.png",
+      "AssetFile": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\uploads\\blog\\b1d0add2-5553-46d3-a463-22edf891880c_ClassDiagramofdatabase.drawio.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "148211"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"BFqdG/S4P30drpiyV2Ar4UXQHm+PU9uXf5B0gX74iBg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 04 Nov 2025 03:12:33 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-BFqdG/S4P30drpiyV2Ar4UXQHm+PU9uXf5B0gX74iBg="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/blog/f99cb7fd-325d-4a90-9a96-1a57654fa784_ComponentDiagram.png",
+      "AssetFile": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\uploads\\blog\\f99cb7fd-325d-4a90-9a96-1a57654fa784_ComponentDiagram.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "21618"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"vkktzntLzdrMq+cmkKW4PPpz6gVizd7OjOhe24QHlHs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 03 Nov 2025 15:42:56 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-vkktzntLzdrMq+cmkKW4PPpz6gVizd7OjOhe24QHlHs="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/blog/f99cb7fd-325d-4a90-9a96-1a57654fa784_ComponentDiagram.uhs49d15sz.png",
+      "AssetFile": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\uploads\\blog\\f99cb7fd-325d-4a90-9a96-1a57654fa784_ComponentDiagram.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "21618"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"vkktzntLzdrMq+cmkKW4PPpz6gVizd7OjOhe24QHlHs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 03 Nov 2025 15:42:56 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "uhs49d15sz"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/blog/f99cb7fd-325d-4a90-9a96-1a57654fa784_ComponentDiagram.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-vkktzntLzdrMq+cmkKW4PPpz6gVizd7OjOhe24QHlHs="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/doctors/2/2189d79a-f569-491a-b8d5-696b2310be00_viber_image_2025-05-22_09-23-34-591.jpg",
+      "AssetFile": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\uploads\\doctors\\2\\2189d79a-f569-491a-b8d5-696b2310be00_viber_image_2025-05-22_09-23-34-591.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "216751"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3dZRnds2PxOxYww9vpymLyY69oPo/0Y75cfe/INC5uk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 01 Nov 2025 13:24:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-3dZRnds2PxOxYww9vpymLyY69oPo/0Y75cfe/INC5uk="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/doctors/2/2189d79a-f569-491a-b8d5-696b2310be00_viber_image_2025-05-22_09-23-34-591.n7hw659qeg.jpg",
+      "AssetFile": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\uploads\\doctors\\2\\2189d79a-f569-491a-b8d5-696b2310be00_viber_image_2025-05-22_09-23-34-591.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "216751"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3dZRnds2PxOxYww9vpymLyY69oPo/0Y75cfe/INC5uk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 01 Nov 2025 13:24:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "n7hw659qeg"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/doctors/2/2189d79a-f569-491a-b8d5-696b2310be00_viber_image_2025-05-22_09-23-34-591.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-3dZRnds2PxOxYww9vpymLyY69oPo/0Y75cfe/INC5uk="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/doctors/2/226fc554-464e-4282-9df3-fc1a7c1b3337_viber_image_2025-05-22_09-23-34-591.jpg",
+      "AssetFile": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\uploads\\doctors\\2\\226fc554-464e-4282-9df3-fc1a7c1b3337_viber_image_2025-05-22_09-23-34-591.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "216751"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3dZRnds2PxOxYww9vpymLyY69oPo/0Y75cfe/INC5uk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 01 Nov 2025 13:24:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-3dZRnds2PxOxYww9vpymLyY69oPo/0Y75cfe/INC5uk="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/doctors/2/226fc554-464e-4282-9df3-fc1a7c1b3337_viber_image_2025-05-22_09-23-34-591.n7hw659qeg.jpg",
+      "AssetFile": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\uploads\\doctors\\2\\226fc554-464e-4282-9df3-fc1a7c1b3337_viber_image_2025-05-22_09-23-34-591.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "216751"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3dZRnds2PxOxYww9vpymLyY69oPo/0Y75cfe/INC5uk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 01 Nov 2025 13:24:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "n7hw659qeg"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/doctors/2/226fc554-464e-4282-9df3-fc1a7c1b3337_viber_image_2025-05-22_09-23-34-591.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-3dZRnds2PxOxYww9vpymLyY69oPo/0Y75cfe/INC5uk="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/doctors/2/63ea677d-fc9b-4319-9947-1c2ea4863d9c_viber_image_2025-05-22_09-23-34-591.jpg",
+      "AssetFile": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\uploads\\doctors\\2\\63ea677d-fc9b-4319-9947-1c2ea4863d9c_viber_image_2025-05-22_09-23-34-591.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "216751"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3dZRnds2PxOxYww9vpymLyY69oPo/0Y75cfe/INC5uk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 01 Nov 2025 13:24:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-3dZRnds2PxOxYww9vpymLyY69oPo/0Y75cfe/INC5uk="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/doctors/2/63ea677d-fc9b-4319-9947-1c2ea4863d9c_viber_image_2025-05-22_09-23-34-591.n7hw659qeg.jpg",
+      "AssetFile": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\uploads\\doctors\\2\\63ea677d-fc9b-4319-9947-1c2ea4863d9c_viber_image_2025-05-22_09-23-34-591.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "216751"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3dZRnds2PxOxYww9vpymLyY69oPo/0Y75cfe/INC5uk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 01 Nov 2025 13:24:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "n7hw659qeg"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/doctors/2/63ea677d-fc9b-4319-9947-1c2ea4863d9c_viber_image_2025-05-22_09-23-34-591.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-3dZRnds2PxOxYww9vpymLyY69oPo/0Y75cfe/INC5uk="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/doctors/2/a5147aff-db02-4221-9fe9-387d82d890b5_viber_image_2025-05-22_09-23-34-591.jpg",
+      "AssetFile": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\uploads\\doctors\\2\\a5147aff-db02-4221-9fe9-387d82d890b5_viber_image_2025-05-22_09-23-34-591.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "216751"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3dZRnds2PxOxYww9vpymLyY69oPo/0Y75cfe/INC5uk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 01 Nov 2025 13:24:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-3dZRnds2PxOxYww9vpymLyY69oPo/0Y75cfe/INC5uk="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/doctors/2/a5147aff-db02-4221-9fe9-387d82d890b5_viber_image_2025-05-22_09-23-34-591.n7hw659qeg.jpg",
+      "AssetFile": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\uploads\\doctors\\2\\a5147aff-db02-4221-9fe9-387d82d890b5_viber_image_2025-05-22_09-23-34-591.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "216751"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3dZRnds2PxOxYww9vpymLyY69oPo/0Y75cfe/INC5uk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 01 Nov 2025 13:24:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "n7hw659qeg"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/doctors/2/a5147aff-db02-4221-9fe9-387d82d890b5_viber_image_2025-05-22_09-23-34-591.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-3dZRnds2PxOxYww9vpymLyY69oPo/0Y75cfe/INC5uk="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/doctors/2/aeee5533-1de1-4a44-b638-1f5ec590f8ff_viber_image_2025-05-22_09-23-34-591.jpg",
+      "AssetFile": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\uploads\\doctors\\2\\aeee5533-1de1-4a44-b638-1f5ec590f8ff_viber_image_2025-05-22_09-23-34-591.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "216751"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3dZRnds2PxOxYww9vpymLyY69oPo/0Y75cfe/INC5uk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 01 Nov 2025 13:24:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-3dZRnds2PxOxYww9vpymLyY69oPo/0Y75cfe/INC5uk="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/doctors/2/aeee5533-1de1-4a44-b638-1f5ec590f8ff_viber_image_2025-05-22_09-23-34-591.n7hw659qeg.jpg",
+      "AssetFile": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\uploads\\doctors\\2\\aeee5533-1de1-4a44-b638-1f5ec590f8ff_viber_image_2025-05-22_09-23-34-591.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "216751"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3dZRnds2PxOxYww9vpymLyY69oPo/0Y75cfe/INC5uk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 01 Nov 2025 13:24:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "n7hw659qeg"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/doctors/2/aeee5533-1de1-4a44-b638-1f5ec590f8ff_viber_image_2025-05-22_09-23-34-591.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-3dZRnds2PxOxYww9vpymLyY69oPo/0Y75cfe/INC5uk="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/doctors/2/c5e08900-c827-4a00-be55-e9140faa6a68_viber_image_2025-05-22_09-23-34-591.jpg",
+      "AssetFile": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\uploads\\doctors\\2\\c5e08900-c827-4a00-be55-e9140faa6a68_viber_image_2025-05-22_09-23-34-591.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "216751"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3dZRnds2PxOxYww9vpymLyY69oPo/0Y75cfe/INC5uk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 01 Nov 2025 13:24:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-3dZRnds2PxOxYww9vpymLyY69oPo/0Y75cfe/INC5uk="
+        }
+      ]
+    },
+    {
+      "Route": "uploads/doctors/2/c5e08900-c827-4a00-be55-e9140faa6a68_viber_image_2025-05-22_09-23-34-591.n7hw659qeg.jpg",
+      "AssetFile": "C:\\Users\\user\\OneDrive\\Desktop\\mentalback\\MindCareBackend\\wwwroot\\uploads\\doctors\\2\\c5e08900-c827-4a00-be55-e9140faa6a68_viber_image_2025-05-22_09-23-34-591.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "216751"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3dZRnds2PxOxYww9vpymLyY69oPo/0Y75cfe/INC5uk=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 01 Nov 2025 13:24:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "n7hw659qeg"
+        },
+        {
+          "Name": "label",
+          "Value": "uploads/doctors/2/c5e08900-c827-4a00-be55-e9140faa6a68_viber_image_2025-05-22_09-23-34-591.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-3dZRnds2PxOxYww9vpymLyY69oPo/0Y75cfe/INC5uk="
+        }
+      ]
     }
   ]
 }

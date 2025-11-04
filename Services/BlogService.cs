@@ -139,7 +139,7 @@ namespace MentalHealthApis.Services
             if (category == null) return false;
 
             bool hasPosts = await _context.BlogPosts.AnyAsync(p => p.CategoryId == id);
-            if (hasPosts) return false; 
+            if (hasPosts) return false;
 
             _context.BlogCategories.Remove(category);
             await _context.SaveChangesAsync();
@@ -289,61 +289,61 @@ namespace MentalHealthApis.Services
             return posts;
         }
 
-    public async Task<BlogPostDto> CreatePostAsync(CreateBlogPostDto dto, string authorId)
-{
-    if (!int.TryParse(authorId, out var parsedAuthorId))
-        throw new ArgumentException("Invalid author ID format.");
+        public async Task<BlogPostDto> CreatePostAsync(CreateBlogPostDto dto, string authorId)
+        {
+            if (!int.TryParse(authorId, out var parsedAuthorId))
+                throw new ArgumentException("Invalid author ID format.");
 
-    string? featuredImagePath = null; 
+            string? featuredImagePath = null;
 
-    if (dto.FeaturedImageFile != null && dto.FeaturedImageFile.Length > 0)
-    {
-        _logger.LogInformation("FeaturedImageFile is present. Saving file...");
-        featuredImagePath = await SaveFile(dto.FeaturedImageFile);
-        _logger.LogInformation("File saved. Path: {FilePath}", featuredImagePath);
-    }
-    else
-    {
-        _logger.LogWarning("No FeaturedImageFile was uploaded.");
-    }
+            if (dto.FeaturedImageFile != null && dto.FeaturedImageFile.Length > 0)
+            {
+                _logger.LogInformation("FeaturedImageFile is present. Saving file...");
+                featuredImagePath = await SaveFile(dto.FeaturedImageFile);
+                _logger.LogInformation("File saved. Path: {FilePath}", featuredImagePath);
+            }
+            else
+            {
+                _logger.LogWarning("No FeaturedImageFile was uploaded.");
+            }
 
-    var post = new BlogPost
-    {
-        Title = dto.Title,
-        Content = dto.Content,
-        Summary = dto.Summary,
-        Slug = GenerateSlug(dto.Title),
-        FeaturedImage = featuredImagePath,
-        CategoryId = dto.CategoryId,
-        AuthorId = parsedAuthorId,
-        Status = dto.Status,
-        IsFeatured = dto.IsFeatured,
-        MetaDescription = dto.MetaDescription,
-        MetaKeywords = dto.MetaKeywords,
-        CreatedAt = DateTime.UtcNow,
-        PublishedAt = dto.Status == PostStatus.Published ? DateTime.UtcNow : null
-    };
+            var post = new BlogPost
+            {
+                Title = dto.Title,
+                Content = dto.Content,
+                Summary = dto.Summary,
+                Slug = GenerateSlug(dto.Title),
+                FeaturedImage = featuredImagePath,
+                CategoryId = dto.CategoryId,
+                AuthorId = parsedAuthorId,
+                Status = PostStatus.Published,
+                IsFeatured = dto.IsFeatured,
+                MetaDescription = dto.MetaDescription,
+                MetaKeywords = dto.MetaKeywords,
+                CreatedAt = DateTime.UtcNow,
+                PublishedAt = dto.Status == PostStatus.Published ? DateTime.UtcNow : null
+            };
 
-    _context.BlogPosts.Add(post);
-    
-    _logger.LogInformation("Attempting to save new BlogPost to database...");
+            _context.BlogPosts.Add(post);
 
-    await _context.SaveChangesAsync();
-    
-    _logger.LogInformation("BlogPost saved successfully with ID: {PostId}", post.Id);
+            _logger.LogInformation("Attempting to save new BlogPost to database...");
 
-    if (!string.IsNullOrWhiteSpace(dto.Tags))
-    {
-        var tagNames = dto.Tags.Split(',').Select(t => t.Trim()).ToList();
-        await UpdatePostTagsAsync(post.Id, tagNames);
-    }
+            await _context.SaveChangesAsync();
 
-    var result = await GetPostByIdAsync(post.Id);
-    if (result == null)
-        throw new Exception("Post creation succeeded but retrieval failed.");
+            _logger.LogInformation("BlogPost saved successfully with ID: {PostId}", post.Id);
 
-    return result;
-}
+            if (!string.IsNullOrWhiteSpace(dto.Tags))
+            {
+                var tagNames = dto.Tags.Split(',').Select(t => t.Trim()).ToList();
+                await UpdatePostTagsAsync(post.Id, tagNames);
+            }
+
+            var result = await GetPostByIdAsync(post.Id);
+            if (result == null)
+                throw new Exception("Post creation succeeded but retrieval failed.");
+
+            return result;
+        }
 
         public async Task<BlogPostDto?> UpdatePostAsync(int id, UpdateBlogPostDto dto, string authorId)
         {
@@ -377,13 +377,13 @@ namespace MentalHealthApis.Services
 
             if (dto.Status == PostStatus.Published && post.PublishedAt == null)
                 post.PublishedAt = DateTime.UtcNow;
-            
+
             if (!string.IsNullOrWhiteSpace(dto.Tags))
             {
                 var tagNames = dto.Tags.Split(',').Select(t => t.Trim()).ToList();
                 await UpdatePostTagsAsync(post.Id, tagNames);
-            } 
-            else 
+            }
+            else
             {
                 post.Tags.Clear();
             }
@@ -475,7 +475,7 @@ namespace MentalHealthApis.Services
                 })
                 .ToListAsync();
         }
-        
+
         private async Task<string> SaveFile(IFormFile file)
         {
             var uploadsFolderPath = Path.Combine(_hostingEnvironment.WebRootPath, "uploads", "blog");
@@ -546,7 +546,6 @@ namespace MentalHealthApis.Services
 
             if (latestSentiment == null)
             {
-                // Return an empty list if there's no journal history
                 return new List<BlogPostSummaryDto>();
             }
 
@@ -559,30 +558,24 @@ namespace MentalHealthApis.Services
             if (latestSentiment.Suicidal) tagsToSearch.Add("suicide");
             if (latestSentiment.PersonalityDisorder) tagsToSearch.Add("personality-disorder");
 
-            // If no negative sentiments, recommend general wellness topics
             if (!tagsToSearch.Any() && latestSentiment.Normal)
             {
-                tagsToSearch.Add("wellness");
-                tagsToSearch.Add("mindfulness");
+                tagsToSearch.AddRange(new[] { "wellness", "mindfulness" });
             }
 
             if (!tagsToSearch.Any())
             {
-                // No relevant sentiments were detected
                 return new List<BlogPostSummaryDto>();
             }
 
             _logger.LogInformation("For user {UserId}, searching for posts with tags: {Tags}", userId, string.Join(", ", tagsToSearch));
 
-            // Step 3: Directly query for blog posts matching the tags
-            var recommendedPosts = await _context.BlogPosts
-                // Filter for posts that are published and in an active category
+            // Step 3: Query posts
+            var posts = await _context.BlogPosts
                 .Where(post => post.Status == PostStatus.Published &&
                                post.Category.IsActive == true &&
-                               // The post must have at least one tag that is in our search list
                                post.Tags.Any(tag => tagsToSearch.Contains(tag.Slug)))
                 .OrderByDescending(post => post.PublishedAt)
-                // Project the database result into our desired DTO format
                 .Select(post => new BlogPostSummaryDto
                 {
                     Id = post.Id,
@@ -597,12 +590,18 @@ namespace MentalHealthApis.Services
                     IsFeatured = post.IsFeatured,
                     Tags = post.Tags.Select(t => t.Name).ToList()
                 })
-                .Distinct() // Ensures a post isn't recommended twice if it has multiple matching tags
-                .Take(20)   // Limit the number of recommendations
+                .Take(50) // fetch a bit more before deduplicating
                 .ToListAsync();
+
+            // Step 4: Deduplicate in memory (no EF translation issue)
+            var recommendedPosts = posts
+                .DistinctBy(p => p.Id) // requires: using System.Linq;
+                .Take(20) // final limit
+                .ToList();
 
             return recommendedPosts;
         }
+
 
         #endregion
     }

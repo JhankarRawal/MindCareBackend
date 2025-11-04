@@ -163,21 +163,28 @@ namespace MentalHealthApis.Services
             }
          #endregion
 
-        // ========= ADD THIS ENTIRE NEW METHOD =========
-        public async Task<SentimentFlags?> GetLatestSentimentForUserAsync(int userId)
+      
+
+public async Task<SentimentFlags?> GetLatestSentimentForUserAsync(int userId)
+    {
+        var latestEntry = await _context.JournalEntries
+            .Where(j => j.UserId == userId)
+            .OrderByDescending(j => j.EntryDate)
+            .ThenByDescending(j => j.CreatedAt)
+            .FirstOrDefaultAsync();
+
+        if (latestEntry == null || string.IsNullOrEmpty(latestEntry.SentimentJson))
         {
-            var latestEntry = await _context.JournalEntries
-                .Where(j => j.UserId == userId)
-                .OrderByDescending(j => j.EntryDate)   // Get the newest entry by date
-                .ThenByDescending(j => j.CreatedAt) // If dates are the same, get the one created last
-                .FirstOrDefaultAsync();
-
-            if (latestEntry == null || string.IsNullOrEmpty(latestEntry.SentimentJson))
-            {
-                return null;
-            }
-
-            return JsonSerializer.Deserialize<SentimentFlags>(latestEntry.SentimentJson);
+            return null;
         }
+
+        var options = new JsonSerializerOptions
+        {
+            PropertyNameCaseInsensitive = true
+        };
+
+        return JsonSerializer.Deserialize<SentimentFlags>(latestEntry.SentimentJson, options);
     }
+
+}
 }
